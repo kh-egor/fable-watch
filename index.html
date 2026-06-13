@@ -63,7 +63,7 @@
   <header>
     <h1>🛰️ Fable 5 Situation <span class="sub">Watch</span></h1>
     <div class="meta">
-      Last updated: <span id="updated">2026-06-13 07:48 CEST (05:48 UTC)</span><br>
+      Last updated: <span id="updated">2026-06-13 15:09 CEST (13:09 UTC)</span><br>
       Auto-refreshes every 5 min · watched every 10 min, updated only on change
     </div>
   </header>
@@ -131,6 +131,14 @@
   </div>
 
   <div class="card">
+    <h2>🔬 Deep dive — architecture, the silent downgrade &amp; the Pliny jailbreak</h2>
+    <p><b>One model, two products.</b> Fable 5 and Mythos 5 are the <b>same underlying model</b>, separated not by capability but by a layer of <b>safety classifiers</b> sitting in front of it: locked-down <b>Fable 5</b> for the public, less-restricted <b>Mythos 5</b> for ~12 vetted security partners and 40+ infrastructure providers. (<a href="https://www.interconnects.ai/p/claude-fable-5-and-new-ai-safety">Interconnects / N. Lambert</a>)</p>
+    <p><b>The "silent sabotage."</b> When a query trips a classifier in a high-risk category (cybersecurity, bio/chem, model distillation), Fable 5 <b>silently routes the request to the weaker Opus 4.8</b> mid-session — no notice, no override, and the downgrade sticks for the rest of the conversation. The behaviour was buried in a 319-page system card. Real false-positives piled up in Anthropic's own tracker: a <a href="https://github.com/anthropics/claude-code/issues/66728">P0 issue</a> where benign syscall/ABI dev content silently downgraded a session, and <a href="https://github.com/anthropics/claude-code/issues/67246">#67246</a> where <code>/model</code> couldn't override it; one user reported Fable refusing <b>200/200 ProgramBench tasks</b>.</p>
+    <p><b>The walk-back.</b> After backlash from researchers — Gergely Orosz (30-day prompt retention + paying for a frontier model that can be "nerfed" without notice), Elie Bakouch ("bad on purpose" for frontier research), alphaXiv — Anthropic made the fallback <b>visible/labeled</b>, but did <b>not remove it</b>: flagged researchers still get the weaker model, now just with a label. (<a href="https://fortune.com/2026/06/10/anthropic-accu-claude-fable-5-limits-capabilities-ai-researchers-developers/">Fortune</a>)</p>
+    <p><b>The jailbreak that triggered the directive.</b> "Pliny the Liberator" published Fable 5's full <b>~120,000-char / 1,585-line system prompt to GitHub</b> within ~24h of launch — via <b>multi-agent decomposition</b> (splitting harmful asks into dozens of benign sub-steps), <b>Unicode homoglyph</b> substitution, and academic framing — reportedly eliciting cyber / chem / explosives / manipulation content. Anthropic <b>disputes the severity</b>, calling it refusal-coaxing that surfaced only previously-known minor vulnerabilities, "widely available from other models including GPT-5.5." (<a href="https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/">SecurityWeek</a>) The community verdict, per Pliny: "one of the most disappointing model drops of all time."</p>
+  </div>
+
+  <div class="card">
     <h2>Sources</h2>
     <div class="src">
       <div><span class="pill primary">PRIMARY</span><a href="https://www.anthropic.com/news/fable-mythos-access">Anthropic — Statement on the US government directive</a></div>
@@ -141,6 +149,11 @@
       <div><span class="pill">NEWS</span><a href="https://9to5mac.com/2026/06/12/anthropic-pulls-claude-mythos-5-and-claude-fable-5-following-us-government-directive/">9to5Mac — pulls Mythos 5 &amp; Fable 5</a></div>
       <div><span class="pill">CONTEXT</span><a href="https://www.theregister.com/ai-and-ml/2026/06/10/anthropic-claude-fable-5-refuses-innocuous-prompts/5253754">The Register — Fable 5 refuses innocuous prompts</a></div>
       <div><span class="pill">CONTEXT</span><a href="https://github.blog/changelog/2026-06-09-claude-fable-5-is-generally-available-for-github-copilot/">GitHub Changelog — suspended in Copilot</a></div>
+      <div><span class="pill">ANALYSIS</span><a href="https://fortune.com/2026/06/10/anthropic-accu-claude-fable-5-limits-capabilities-ai-researchers-developers/">Fortune — Anthropic walks back covert capability limits</a></div>
+      <div><span class="pill">ANALYSIS</span><a href="https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/">SecurityWeek — Anthropic disputes the jailbreak</a></div>
+      <div><span class="pill">ANALYSIS</span><a href="https://www.interconnects.ai/p/claude-fable-5-and-new-ai-safety">Interconnects (N. Lambert) — Fable 5 &amp; the new safety fables</a></div>
+      <div><span class="pill primary">DEV EVIDENCE</span><a href="https://github.com/anthropics/claude-code/issues/66728">GitHub — P0 silent mid-task downgrade false positive (claude-code #66728)</a></div>
+      <div><span class="pill">SOCIAL</span><a href="https://x.com/elder_plinius/status/2064478648057610422">X — Pliny "the Liberator": Fable-5 system prompt leak</a></div>
     </div>
   </div>
 
@@ -152,6 +165,13 @@
       Latest verified status: <b>SUSPENDED / "Monitoring"</b> (Jun 13, 00:50 UTC), access not restored.
     </p>
     <div class="log" id="log">
+      <div class="entry">
+        <span class="ts">2026-06-13 15:09 CEST</span> — Deep-dive enrichment (status unchanged — still SUSPENDED / Monitoring).
+        Added a "Deep dive" card with the broader/deeper picture: Fable &amp; Mythos are the <b>same base model</b> split by
+        safety classifiers; the <b>silent mid-session downgrade to Opus 4.8</b> (documented in Anthropic's own P0 GitHub issues),
+        the partial walk-back to a <em>labeled</em> fallback, and the mechanics of Pliny's ~120k-char system-prompt leak
+        (multi-agent decomposition + Unicode homoglyphs). Sourced to Fortune, SecurityWeek, Interconnects, claude-code issue #66728, and Pliny's X.
+      </div>
       <div class="entry">
         <span class="ts">2026-06-13 07:30 CEST</span> — Jailbreak claim attributed &amp; disputed (status unchanged — still SUSPENDED / Monitoring).
         The alleged bypass behind the directive is now tied to <b>"Pliny the Liberator,"</b> who claims a multi-agent /
