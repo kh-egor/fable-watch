@@ -56,6 +56,16 @@
   .pill.primary{color:var(--ok);border-color:rgba(62,207,142,.4)}
   footer{color:var(--dim);font-size:12px;text-align:center;margin-top:30px;font-family:var(--mono)}
   .unaffected{color:var(--ok)}
+  .boom{background:linear-gradient(90deg,rgba(255,122,89,.12),rgba(255,122,89,.02));
+    border:1px solid rgba(255,122,89,.35);border-radius:12px;padding:14px 18px;margin:0 0 20px}
+  .boom h3{margin:0 0 8px;font-size:15px;color:var(--accent)}
+  .boom ol{margin:0;padding-left:20px} .boom li{margin:7px 0}
+  .camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px}
+  .camp{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .camp h4{margin:0 0 4px;font-size:14.5px} .camp .stance{color:var(--dim);font-size:13px;margin:0 0 7px}
+  .camp .voice{font-size:12.5px;color:var(--ink);border-left:2px solid var(--accent2);padding-left:9px;font-style:italic}
+  .platforms{font-size:14px;color:var(--dim);margin:16px 0 0;border-top:1px dashed var(--line);padding-top:14px}
+  .platforms b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -63,7 +73,7 @@
   <header>
     <h1>🛰️ Fable 5 Situation <span class="sub">Watch</span></h1>
     <div class="meta">
-      Last updated: <span id="updated">2026-06-13 15:45 CEST (13:45 UTC)</span><br>
+      Last updated: <span id="updated">2026-06-14 15:54 CEST (13:54 UTC)</span><br>
       Auto-refreshes every 5 min · watched every 10 min, updated only on change
     </div>
   </header>
@@ -124,8 +134,9 @@
     <h2>Timeline</h2>
     <ul class="timeline">
       <li><time>Jun 9</time> Fable 5 &amp; Mythos 5 released; Fable GA in GitHub Copilot.</li>
-      <li><time>Jun 10</time> Over-refusal backlash; "silent sabotage" downgrade controversy.</li>
-      <li><time>Jun 12 · 5:21 PM ET</time> U.S. government export-control directive received.</li>
+      <li><time>Jun 10</time> Over-refusal backlash; "silent sabotage" downgrade controversy. Amodei publishes "Policy on the AI Exponential," calling for mandatory third-party testing.</li>
+      <li><time>Jun 12 · morning</time> Amazon CEO <b>Andy Jassy</b> — Anthropic's largest investor ($13B), board member &amp; AWS host (and Nova competitor) — alerts Treasury Sec. Scott Bessent to a jailbreak found by <b>Amazon</b> researchers.</li>
+      <li><time>Jun 12 · 5:21 PM ET</time> Commerce Sec. Howard Lutnick → CEO Dario Amodei: export-control directive received.</li>
       <li class="now"><time>Jun 12 → now</time> Both models disabled for ALL customers; status = "Monitoring." Anthropic disagrees but complies; promises detail within 24h.</li>
     </ul>
   </div>
@@ -135,7 +146,64 @@
     <p><b>One model, two products.</b> Fable 5 and Mythos 5 are the <b>same underlying model</b>, separated not by capability but by a layer of <b>safety classifiers</b> sitting in front of it: locked-down <b>Fable 5</b> for the public, less-restricted <b>Mythos 5</b> for ~12 vetted security partners and 40+ infrastructure providers. (<a href="https://www.interconnects.ai/p/claude-fable-5-and-new-ai-safety">Interconnects / N. Lambert</a>)</p>
     <p><b>The "silent sabotage."</b> When a query trips a classifier in a high-risk category (cybersecurity, bio/chem, model distillation), Fable 5 <b>silently routes the request to the weaker Opus 4.8</b> mid-session — no notice, no override, and the downgrade sticks for the rest of the conversation. The behaviour was buried in a 319-page system card. Real false-positives piled up in Anthropic's own tracker: a <a href="https://github.com/anthropics/claude-code/issues/66728">P0 issue</a> where benign syscall/ABI dev content silently downgraded a session, and <a href="https://github.com/anthropics/claude-code/issues/67246">#67246</a> where <code>/model</code> couldn't override it; one user reported Fable refusing <b>200/200 ProgramBench tasks</b>.</p>
     <p><b>The walk-back.</b> After backlash from researchers — Gergely Orosz (30-day prompt retention + paying for a frontier model that can be "nerfed" without notice), Elie Bakouch ("bad on purpose" for frontier research), alphaXiv — Anthropic made the fallback <b>visible/labeled</b>, but did <b>not remove it</b>: flagged researchers still get the weaker model, now just with a label. (<a href="https://fortune.com/2026/06/10/anthropic-accu-claude-fable-5-limits-capabilities-ai-researchers-developers/">Fortune</a>)</p>
-    <p><b>The jailbreak that triggered the directive.</b> "Pliny the Liberator" published Fable 5's full <b>~120,000-char / 1,585-line system prompt to GitHub</b> within ~24h of launch — via <b>multi-agent decomposition</b> (splitting harmful asks into dozens of benign sub-steps), <b>Unicode homoglyph</b> substitution, and academic framing — reportedly eliciting cyber / chem / explosives / manipulation content. Anthropic <b>disputes the severity</b>, calling it refusal-coaxing that surfaced only previously-known minor vulnerabilities, "widely available from other models including GPT-5.5." (<a href="https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/">SecurityWeek</a>) The community verdict, per Pliny: "one of the most disappointing model drops of all time."</p>
+    <p><b>The jailbreak that triggered the directive.</b> "Pliny the Liberator" published Fable 5's full <b>~120,000-char / 1,585-line system prompt to GitHub</b> within ~24h of launch — via <b>multi-agent decomposition</b> (splitting harmful asks into dozens of benign sub-steps), <b>Unicode homoglyph</b> substitution, and academic framing — reportedly eliciting cyber / chem / explosives / manipulation content. Anthropic <b>disputes the severity</b>, calling it refusal-coaxing that surfaced only previously-known minor vulnerabilities, "widely available from other models including GPT-5.5" (it cites OpenAI's own GPT-5.5 cyber-eval disclosures), and stresses its hardest safeguards are <b>independent classifiers that survive any model-level refusal bypass</b>. (<a href="https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/">SecurityWeek</a>) Independent security researcher <b>Katie Moussouris</b> concurred — "It's not a jailbreak," characterizing the Amazon finding as <em>defensive</em> prompting, not exploitation. The community verdict, per Pliny: "one of the most disappointing model drops of all time."</p>
+  </div>
+
+  <div class="card">
+    <h2>🗣️ How the world reacted — the opinion map</h2>
+    <div class="boom">
+      <h3>The three boomerangs</h3>
+      <ol>
+        <li><b>The danger narrative.</b> Anthropic spent months marketing Mythos as <em>too powerful to release</em>. The government took it at its word — and now Anthropic must argue its own model <em>down</em>, calling the jailbreak "narrow" and already present in GPT-5.5.</li>
+        <li><b>The regulation it championed.</b> Anthropic pushed hardest for AI oversight; the blunt, ad-hoc version landed on <em>it</em> first. The irony cuts deeper: NSPM-11 says <em>no vendor</em> may disable an AI the U.S. depends on — yet Washington just forced Anthropic to do exactly that to <em>allied</em> governments. (The 2023 red-team oversight that might have caught this was rescinded in Jan 2025.)</li>
+        <li><b>Its own backer pulled the trigger.</b> The shutdown was reportedly set off by <b>Amazon CEO Andy Jassy</b> — simultaneously Anthropic's $13B investor, board member, AWS host, <em>and</em> Nova competitor — flagging an Amazon-found jailbreak to Treasury hours before the directive.</li>
+      </ol>
+    </div>
+    <div class="camps">
+      <div class="camp">
+        <h4>🏛️ "Inevitable, not a mistake"</h4>
+        <p class="stance">National-security realists — resigned, not cheering.</p>
+        <p class="voice">Tom Tugendhat (ex-UK security min.): "…sovereignty is more about code than cannons."</p>
+      </div>
+      <div class="camp">
+        <h4>🔥 "Dangerous overreach"</h4>
+        <p class="stance">Precedent alarmists — the largest, loudest camp.</p>
+        <p class="voice">Anthropic: a precedent that "could halt all new frontier AI model deployments." Gary Marcus: "wildly overdramatic and counterproductive."</p>
+      </div>
+      <div class="camp">
+        <h4>🌍 "Build your own"</h4>
+        <p class="stance">Sovereignty awakening — abroad, it read as a dependence warning.</p>
+        <p class="voice">Sridhar Vembu (Zoho): "Bharat must find her own way." Bardella: accelerate Mistral. Sarvam: "don't confuse access with ownership."</p>
+      </div>
+      <div class="camp">
+        <h4>🎭 "Safety theater, exposed"</h4>
+        <p class="stance">Cynics — the danger framing was always marketing.</p>
+        <p class="voice">Dean Ball: it "raises the status of the argument that AI safety has been hype to justify monopolistic behavior." Timnit Gebru: "safety theater."</p>
+      </div>
+      <div class="camp">
+        <h4>🧪 "Secret sabotage"</h4>
+        <p class="stance">Researcher revolt — this one <em>predates</em> the ban (Jun 10).</p>
+        <p class="voice">Nathan Lambert (AI2): a model "that gets less intelligent automatically without notifying me is categorically misaligned AI." Jeremy Howard: "they'll sabotage others."</p>
+      </div>
+      <div class="camp">
+        <h4>😤 "It blocked us at hello"</h4>
+        <p class="stance">Everyday users — comedy of over-refusals.</p>
+        <p class="voice">"cancer" flagged as a biosecurity risk; sessions of only "Hello" rejected. Anthropic admitted "the wrong tradeoff."</p>
+      </div>
+      <div class="camp">
+        <h4>🦅 "Told you so"</h4>
+        <p class="stance">Open-source camp — vindication.</p>
+        <p class="voice">Locally-hosted weights "cannot be remotely disabled." Framed as a "wakeup call" to run local models.</p>
+      </div>
+      <div class="camp">
+        <h4>💸 "A refund is a poor substitute"</h4>
+        <p class="stance">Paying customers — trust, not money, is the wound.</p>
+        <p class="voice">Max-tier upgraders got partial refunds &amp; broken workflows; the tool "can disappear overnight for reasons that have nothing to do with… their own behavior."</p>
+      </div>
+    </div>
+    <p class="platforms">
+      <b>Where the noise lives:</b> <b>Hacker News</b> ran a ~500-comment pile-on split between "unusable… due to the refusals" and Simon Willison's "something of a beast… slow, expensive" praise for autonomous coding · <b>Reddit</b> mourned blocked work "in geography, hydrology, political ecology" and pleaded for the model's return · <b>X</b> was the loudest: Pliny's "PWNED / LIBERATED," scientists posting absurd refusals, politicians posting sovereignty takes · <b>LinkedIn / enterprise</b> fixated on governance risk — Claire Vo on safety that can be "overridden overnight." Notably <b>quiet:</b> no prominent AI-safety/doomer figure has publicly claimed "vindication" — yet.
+    </p>
   </div>
 
   <div class="card">
@@ -158,6 +226,11 @@
       <div><span class="pill">NEWS</span><a href="https://www.cnn.com/2026/06/13/business/anthropic-mythos-model-national-security">CNN — suspends all access after foreign-national ban</a></div>
       <div><span class="pill">NEWS</span><a href="https://time.com/article/2026/06/13/anthropic-fable-mythos-ban-US-security/">TIME — pulls most powerful models after US bars foreign access</a></div>
       <div><span class="pill">NEWS</span><a href="https://fortune.com/2026/06/13/anthropic-fable-mythos-models-commerce-deparment-export-restrictions-jailbreak-defense-prompting/">Fortune — "It's not a jailbreak"; research was for defense</a></div>
+      <div><span class="pill">NEWS</span><a href="https://www.techtimes.com/articles/318350/20260614/amazon-triggered-claude-fable-5-shutdown-investor-cloud-host-now-regulator.htm">TechTimes — Amazon (Jassy) triggered the shutdown: investor, host, board, competitor</a></div>
+      <div><span class="pill">ANALYSIS</span><a href="https://www.techpolicy.press/anthropics-mythos-recall-and-the-white-houses-missing-ai-safety-playbook/">Tech Policy Press — the Mythos recall &amp; the missing AI-safety playbook (NSPM-11)</a></div>
+      <div><span class="pill">ANALYSIS</span><a href="https://www.justsecurity.org/142619/anthropic-mythos-government-directive/">Just Security — Washington's missing AI safety playbook</a></div>
+      <div><span class="pill">OPINION</span><a href="https://aigovernancelead.substack.com/p/inside-the-fable-5-shutdown-reactions">AI Governance Lead — reactions roundup (Marcus, Vo, Gebru, Appleton, Maier)</a></div>
+      <div><span class="pill">ANALYSIS</span><a href="https://venturebeat.com/technology/anthropic-blocks-all-public-access-to-claude-fable-5-mythos-5-following-us-government-order-what-enterprises-should-do">VentureBeat — what enterprises should do</a></div>
     </div>
   </div>
 
@@ -169,6 +242,10 @@
       Latest verified status: <b>SUSPENDED / "Monitoring"</b> (Jun 13, 00:50 UTC), access not restored.
     </p>
     <div class="log" id="log">
+      <div class="entry">
+        <span class="ts">2026-06-14 15:54 CEST</span> — Opinion/reaction enrichment (status unchanged — still SUSPENDED / Monitoring, status page frozen at Jun 13 00:50 UTC).
+        Added a <b>"How the world reacted" card</b> mapping the sentiment into 8 camps with named voices (Tugendhat, Marcus, Vembu, Dean Ball, Gebru, Lambert, J. Howard), a <b>"three boomerangs"</b> framing (the danger narrative, the regulation Anthropic championed + the NSPM-11 self-contradiction, and Amazon/Jassy's four-hats conflict triggering the shutdown), and a platform-sentiment breakdown (HN / Reddit / X / LinkedIn). Enriched the timeline with the <b>Jun 12 AM Jassy → Bessent</b> tip-off and added <b>Katie Moussouris</b>' independent "it's not a jailbreak" verdict + the GPT-5.5 cyber-eval reference to the deep dive. Sourced to Tech Policy Press, Just Security, TechTimes, AI Governance Lead, VentureBeat, Interconnects.
+      </div>
       <div class="entry">
         <span class="ts">2026-06-13 15:45 CEST</span> — New reporting on the trigger &amp; a possible timeline (status still SUSPENDED / Monitoring).
         Per an <b>Axios scoop</b> citing an administration official, the Commerce Department acted after
