@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="300">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Live, on-demand watch on the US-government suspension of Anthropic's Claude Fable 5 &amp; Mythos 5 — verified against primary sources.">
 <title>Fable 5 Situation Watch</title>
 <style>
   :root{
@@ -66,6 +67,15 @@
   .camp .voice{font-size:12.5px;color:var(--ink);border-left:2px solid var(--accent2);padding-left:9px;font-style:italic}
   .platforms{font-size:14px;color:var(--dim);margin:16px 0 0;border-top:1px dashed var(--line);padding-top:14px}
   .platforms b{color:var(--ink)}
+  html{scroll-behavior:smooth}
+  .card{scroll-margin-top:14px}
+  .nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;font-family:var(--mono);font-size:12.5px}
+  .nav a{color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--panel)}
+  .nav a:hover{color:var(--ink);border-color:var(--accent2)}
+  .banner-text{display:flex;flex-direction:column;gap:3px}
+  .banner .phase{font-family:var(--mono);font-size:12px;color:var(--warn);font-weight:400}
+  #dayN{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){.banner .dot{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -74,17 +84,29 @@
     <h1>🛰️ Fable 5 Situation <span class="sub">Watch</span></h1>
     <div class="meta">
       Last updated: <span id="updated">2026-06-17 12:26 CEST (10:26 UTC)</span><br>
-      Auto-refreshes every 5 min · watched every 10 min, updated only on change
+      Updated <b>on demand</b> · logged only when something materially changes
     </div>
   </header>
 
   <div class="banner">
     <span class="dot"></span>
-    <b>Fable 5 &amp; Mythos 5 are SUSPENDED for all customers</b>
-    <span class="state" id="status-pill">STATUS: MONITORING</span>
+    <div class="banner-text">
+      <b>Fable 5 &amp; Mythos 5 are SUSPENDED for all customers</b>
+      <span class="phase">Phase: ACTIVE NEGOTIATION — Commerce Dept ↔ Anthropic (daily talks since Jun 12)</span>
+    </div>
+    <span class="state" id="status-pill">MONITORING · <span id="dayN">day —</span></span>
   </div>
 
-  <div class="card">
+  <nav class="nav">
+    <a href="#tldr">TL;DR</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#deep">Deep dive</a>
+    <a href="#reactions">Reactions</a>
+    <a href="#sources">Sources</a>
+    <a href="#updates">Update log</a>
+  </nav>
+
+  <div class="card" id="tldr">
     <h2>TL;DR — Why it vanished</h2>
     <p class="tldr">
       It was <b>not</b> a billing change. On <b>June 12, 2026, 5:21 PM ET</b>, the U.S. government issued an
@@ -130,7 +152,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" id="timeline">
     <h2>Timeline</h2>
     <ul class="timeline">
       <li><time>Jun 9</time> Fable 5 &amp; Mythos 5 released; Fable GA in GitHub Copilot.</li>
@@ -144,7 +166,7 @@
     </ul>
   </div>
 
-  <div class="card">
+  <div class="card" id="deep">
     <h2>🔬 Deep dive — architecture, the silent downgrade &amp; the Pliny jailbreak</h2>
     <p><b>One model, two products.</b> Fable 5 and Mythos 5 are the <b>same underlying model</b>, separated not by capability but by a layer of <b>safety classifiers</b> sitting in front of it: locked-down <b>Fable 5</b> for the public, less-restricted <b>Mythos 5</b> for ~12 vetted security partners and 40+ infrastructure providers. (<a href="https://www.interconnects.ai/p/claude-fable-5-and-new-ai-safety">Interconnects / N. Lambert</a>)</p>
     <p><b>The "silent sabotage."</b> When a query trips a classifier in a high-risk category (cybersecurity, bio/chem, model distillation), Fable 5 <b>silently routes the request to the weaker Opus 4.8</b> mid-session — no notice, no override, and the downgrade sticks for the rest of the conversation. The behaviour was buried in a 319-page system card. Real false-positives piled up in Anthropic's own tracker: a <a href="https://github.com/anthropics/claude-code/issues/66728">P0 issue</a> where benign syscall/ABI dev content silently downgraded a session, and <a href="https://github.com/anthropics/claude-code/issues/67246">#67246</a> where <code>/model</code> couldn't override it; one user reported Fable refusing <b>200/200 ProgramBench tasks</b>.</p>
@@ -152,7 +174,7 @@
     <p><b>The jailbreak that triggered the directive.</b> "Pliny the Liberator" published Fable 5's full <b>~120,000-char / 1,585-line system prompt to GitHub</b> within ~24h of launch — via <b>multi-agent decomposition</b> (splitting harmful asks into dozens of benign sub-steps), <b>Unicode homoglyph</b> substitution, and academic framing — reportedly eliciting cyber / chem / explosives / manipulation content. Anthropic <b>disputes the severity</b>, calling it refusal-coaxing that surfaced only previously-known minor vulnerabilities, "widely available from other models including GPT-5.5" (it cites OpenAI's own GPT-5.5 cyber-eval disclosures), and stresses its hardest safeguards are <b>independent classifiers that survive any model-level refusal bypass</b>. (<a href="https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/">SecurityWeek</a>) Independent security researcher <b>Katie Moussouris</b> concurred — "It's not a jailbreak," characterizing the Amazon finding as <em>defensive</em> prompting, not exploitation. The community verdict, per Pliny: "one of the most disappointing model drops of all time."</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="reactions">
     <h2>🗣️ How the world reacted — the opinion map</h2>
     <div class="boom">
       <h3>The three boomerangs</h3>
@@ -209,7 +231,7 @@
     </p>
   </div>
 
-  <div class="card">
+  <div class="card" id="sources">
     <h2>Sources</h2>
     <div class="src">
       <div><span class="pill primary">PRIMARY</span><a href="https://www.anthropic.com/news/fable-mythos-access">Anthropic — Statement on the US government directive</a></div>
@@ -242,12 +264,12 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" id="updates">
     <h2>📋 Update log (newest first)</h2>
     <p style="color:#9aa4b2;font-size:13px;margin:0 0 14px;border:1px dashed #27303f;border-radius:8px;padding:8px 12px">
-      🟢 <b>Live watch active</b> — re-checked roughly every 10 min; logged here <b>only when something materially changes</b>
-      (status flip, new official statement, directive reversal). No-change cycles are intentionally silent.
-      Latest verified status: <b>SUSPENDED / "Monitoring"</b> (Jun 13, 00:50 UTC), access not restored.
+      🟢 <b>On-demand watch</b> — re-checked when the operator asks; logged here <b>only when something materially changes</b>
+      (status flip, new official statement, directive reversal). Routine no-change checks are intentionally not logged.
+      Latest verified status: <b>SUSPENDED / "Monitoring"</b> (Jun 13, 00:50 UTC), access not restored — now in active Commerce ↔ Anthropic negotiation.
     </p>
     <div class="log" id="log">
       <div class="entry">
@@ -311,9 +333,21 @@
   </div>
 
   <footer>
-    Fable 5 Situation Watch · auto-generated &amp; maintained by Claude Code · facts verified against primary sources.<br>
+    Fable 5 Situation Watch · maintained on demand by Claude Code · facts verified against primary sources.<br>
     Lower-tier SEO sources (fable5.io, outlierkit, getvoibe, ayautomate) deliberately excluded from load-bearing claims.
   </footer>
 </div>
+<script>
+  // Suspension began Jun 12, 2026, 5:21 PM ET (21:21 UTC). Computed on each load — no manual upkeep.
+  (function () {
+    var start = Date.UTC(2026, 5, 12, 21, 21, 0);
+    var ms = Date.now() - start;
+    var el = document.getElementById('dayN');
+    if (!el || ms < 0) return;
+    var days = Math.floor(ms / 86400000);
+    var hours = Math.floor((ms % 86400000) / 3600000);
+    el.textContent = 'day ' + days + (hours ? ' · ' + hours + 'h' : '');
+  })();
+</script>
 </body>
 </html>
