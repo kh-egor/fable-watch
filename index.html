@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<meta name="description" content="A confidential-style briefing tracking the US-government suspension of Anthropic's Claude Fable 5 &amp; Mythos 5 — verified against primary sources, updated on demand.">
+<meta name="description" content="A confidential-style briefing tracking the US-government suspension of Anthropic's Claude Fable 5 &amp; Mythos 5 — verified against primary sources, updated on demand. EN / RU.">
 <title>Fable 5 Situation Watch — Alpine Desk</title>
+<script>/* set language before paint — no flash */(function(){try{var l=localStorage.getItem('fw-lang')||(((navigator.language||navigator.userLanguage||'en').slice(0,2)==='ru')?'ru':'en');document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}catch(e){document.documentElement.setAttribute('data-lang','en');}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --snow:#E7ECEE; --snow-hi:#F2F6F6; --paper:#FCFDFD; --paper-2:#F4F7F7;
-    --ink:#16252A; --muted:#5F7176; --faint:#8A9A9D;
+    --ink:#16252A; --muted:#566A6F; --faint:#7C8C8F;
     --line:#D6DFDF; --line-soft:#E6ECEC;
     --glacier:#2C6E8E; --glacier-deep:#1E4F66; --pine:#1F3D34;
     --gold:#A8842F; --gold-hi:#C6A452; --gold-wash:rgba(168,132,47,.10);
@@ -43,42 +44,44 @@
   .eyebrow{font:500 11.5px/1 var(--mono);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
   .label{font:500 11px/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
 
+  /* ---------- LANGUAGE SWITCH ---------- */
+  .topbar{display:flex;justify-content:flex-end;align-items:center;padding-top:20px}
+  .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--paper)}
+  .lang button{appearance:none;background:transparent;border:0;padding:7px 14px;cursor:pointer;
+    font:500 12px/1 var(--mono);letter-spacing:.1em;color:var(--muted);transition:background .15s,color .15s}
+  .lang button + button{border-left:1px solid var(--line)}
+  .lang button:hover{color:var(--ink)}
+  .lang button[aria-pressed="true"]{background:var(--gold);color:#fff}
+  .lang button:focus-visible{outline:2px solid var(--glacier);outline-offset:2px}
+
+  /* ---------- I18N TOGGLE ---------- */
+  html[data-lang="en"] [lang="ru"], html:not([data-lang]) [lang="ru"]{display:none}
+  html[data-lang="ru"] [lang="en"]{display:none}
+
   /* ---------- MASTHEAD ---------- */
-  header.mast{padding:46px 0 0}
-  .mast-top{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  header.mast{padding:0 0 0}
+  .mast-top{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px}
   .crest{flex:0 0 auto}
   .mast-id{flex:1 1 320px;min-width:0}
-  .mast-id h1{
-    font:500 clamp(34px,6vw,62px)/0.98 var(--serif);
-    letter-spacing:-.015em;margin:.18em 0 0;color:var(--ink);
-  }
+  .mast-id h1{font:500 clamp(34px,6vw,62px)/0.98 var(--serif);letter-spacing:-.015em;margin:.18em 0 0;color:var(--ink)}
   .mast-id h1 .em{font-style:italic;color:var(--glacier-deep)}
   .rule-gold{height:0;border:0;border-top:2px solid var(--gold);position:relative;margin:20px 0 0;opacity:.9}
   .rule-gold::after{content:"";position:absolute;left:0;right:0;top:3px;border-top:1px solid rgba(168,132,47,.4)}
-  .instrument{
-    display:flex;gap:30px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-    margin-top:18px;
-  }
+  .instrument{display:flex;gap:30px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;margin-top:18px}
   .instrument .meta{font:400 12.5px/1.7 var(--mono);color:var(--muted)}
   .instrument .meta b{color:var(--ink);font-weight:500}
   .benchmark{text-align:right}
   .benchmark .alt{font:500 clamp(40px,7vw,58px)/0.9 var(--serif);color:var(--pine);letter-spacing:-.02em}
-  .benchmark .alt span{color:var(--gold)}
+  .benchmark .alt #dayN{color:var(--gold)}
   .benchmark .cap{font:500 10.5px/1.4 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-top:6px}
 
-  /* ---------- ALPINE RIDGE ---------- */
   .ridge{display:block;width:100%;height:auto;margin:26px 0 0;filter:drop-shadow(0 10px 18px rgba(30,79,102,.10))}
 
   /* ---------- STATUS BOARD ---------- */
   .board{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0 0}
-  .status{
-    position:relative;background:var(--paper);border:1px solid var(--line);
-    border-radius:16px;padding:22px 24px;overflow:hidden;
-  }
+  .status{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 24px;overflow:hidden}
   .status::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
-  .status.ok::before{background:var(--spruce)}
-  .status.hold::before{background:var(--amber)}
-  .status.down::before{background:var(--brick)}
+  .status.ok::before{background:var(--spruce)} .status.hold::before{background:var(--amber)} .status.down::before{background:var(--brick)}
   .status .model{font:500 13px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
   .status .state{font:500 26px/1.05 var(--serif);margin:9px 0 0;letter-spacing:-.01em}
   .status.ok .state{color:var(--spruce)} .status.hold .state{color:var(--amber)} .status.down .state{color:var(--brick)}
@@ -94,10 +97,8 @@
   .sec-head h2{font:500 clamp(22px,3.4vw,30px)/1.05 var(--serif);margin:0;letter-spacing:-.01em;color:var(--ink)}
   .sec-head .sub{margin-left:auto;font:400 12px/1.4 var(--mono);color:var(--faint);text-align:right;max-width:46%}
 
-  /* ---------- NAV ---------- */
   nav.dossier{display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 0}
-  nav.dossier a{font:500 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-    border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--paper);}
+  nav.dossier a{font:500 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--paper)}
   nav.dossier a:hover{color:var(--ink);border-color:var(--gold);background:var(--gold-wash)}
 
   /* ---------- REFLECTION ---------- */
@@ -109,7 +110,7 @@
   .essay p b{color:var(--ink);font-weight:600}
   .essay .kicker{font:italic 500 15px/1.5 var(--serif);color:var(--pine);border-left:2px solid var(--gold);padding-left:16px;margin-top:18px}
 
-  /* ---------- TIMELINE (ASCENT) ---------- */
+  /* ---------- TIMELINE ---------- */
   .ascent{list-style:none;margin:0;padding:0}
   .ascent li{position:relative;padding:0 0 22px 34px;border-left:1px solid var(--line);margin-left:8px}
   .ascent li:last-child{padding-bottom:0}
@@ -128,15 +129,12 @@
 
   /* ---------- BOOMERANGS ---------- */
   .boom{background:linear-gradient(180deg,#FBF7EE,#FCFDFD);border:1px solid rgba(168,132,47,.3);border-radius:16px;padding:22px 26px}
-  .boom h3{font:500 16px/1.2 var(--serif);margin:0 0 4px;color:var(--ink)}
   .boom .label{margin-bottom:14px;display:block}
   .boom ol{margin:0;padding:0;counter-reset:b;list-style:none}
-  .boom li{position:relative;padding:12px 0 12px 44px;border-top:1px solid var(--line-soft);counter-increment:b}
+  .boom li{position:relative;padding:12px 0 12px 44px;border-top:1px solid var(--line-soft);counter-increment:b;font-size:14.5px;line-height:1.6;color:#33454a}
   .boom li:first-of-type{border-top:0}
-  .boom li::before{content:counter(b);position:absolute;left:0;top:11px;width:28px;height:28px;border-radius:50%;
-    border:1px solid var(--gold);color:var(--gold);font:500 13px/28px var(--mono);text-align:center}
+  .boom li::before{content:counter(b);position:absolute;left:0;top:11px;width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font:500 13px/28px var(--mono);text-align:center}
   .boom li b{color:var(--ink);font-weight:600}
-  .boom li{font-size:14.5px;line-height:1.6;color:#33454a}
 
   /* ---------- CAMPS ---------- */
   .camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:14px;margin-top:16px}
@@ -147,19 +145,16 @@
   .platforms{margin-top:18px;font-size:13.5px;color:var(--muted);line-height:1.65;border-top:1px solid var(--line);padding-top:16px}
   .platforms b{color:var(--ink);font-weight:600}
 
-  /* ---------- SOURCES LEDGER ---------- */
+  /* ---------- SOURCES ---------- */
   .ledger{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper)}
-  .ledger a{display:flex;gap:12px;align-items:baseline;padding:11px 18px;border-bottom:1px solid var(--line-soft);border-radius:0;border-bottom-style:solid;font-size:14px;color:var(--ink)}
+  .ledger a{display:flex;gap:12px;align-items:baseline;padding:11px 18px;border-bottom:1px solid var(--line-soft);border-radius:0;font-size:14px;color:var(--ink)}
   .ledger a:last-child{border-bottom:0}
   .ledger a:hover{background:var(--gold-wash);color:var(--glacier-deep)}
-  .pill{flex:0 0 auto;font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
-    border:1px solid var(--line);border-radius:5px;padding:4px 7px;background:var(--paper-2);min-width:74px;text-align:center}
+  .pill{flex:0 0 auto;font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:4px 7px;background:var(--paper-2);min-width:74px;text-align:center}
   .pill.primary{color:var(--spruce);border-color:rgba(46,125,91,.4)}
-  .pill.disp{color:var(--brick);border-color:rgba(158,75,60,.35)}
 
-  /* ---------- DISPATCHES (LOG) ---------- */
-  .watch-note{font-size:13px;color:var(--muted);border:1px solid var(--line);border-left:3px solid var(--spruce);
-    border-radius:10px;padding:12px 16px;margin:0 0 18px;line-height:1.6;background:var(--paper)}
+  /* ---------- DISPATCHES ---------- */
+  .watch-note{font-size:13px;color:var(--muted);border:1px solid var(--line);border-left:3px solid var(--spruce);border-radius:10px;padding:12px 16px;margin:0 0 18px;line-height:1.6;background:var(--paper)}
   .watch-note b{color:var(--ink)}
   .log .entry{border-bottom:1px solid var(--line-soft);padding:18px 0}
   .log .entry:first-child{padding-top:0}
@@ -191,7 +186,6 @@
     html{scroll-behavior:auto}.dotpulse{animation:none}
     .reveal{opacity:1!important;transform:none!important}
   }
-  /* page-load reveal */
   .reveal{opacity:0;transform:translateY(10px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
   .reveal.d1{animation-delay:.06s}.reveal.d2{animation-delay:.14s}.reveal.d3{animation-delay:.22s}
   @keyframes rise{to{opacity:1;transform:none}}
@@ -202,13 +196,17 @@
 
   <!-- ================= MASTHEAD ================= -->
   <header class="mast">
+    <div class="topbar reveal d1">
+      <div class="lang" role="group" aria-label="Language / Язык">
+        <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-btn="ru" aria-pressed="false">РУ</button>
+      </div>
+    </div>
     <div class="mast-top reveal d1">
-      <!-- Engraved guilloché crest -->
       <svg class="crest" width="86" height="86" viewBox="0 0 86 86" role="img" aria-label="Fable 5 watch crest">
         <circle cx="43" cy="43" r="41" fill="#FCFDFD" stroke="#A8842F" stroke-width="1.4"/>
         <circle cx="43" cy="43" r="37" fill="none" stroke="#C6A452" stroke-width="0.6" stroke-dasharray="1 2.4"/>
         <circle cx="43" cy="43" r="31.5" fill="none" stroke="#A8842F" stroke-width="0.5" opacity=".6"/>
-        <!-- peak -->
         <path d="M22 56 L37 31 L45 44 L52 34 L64 56 Z" fill="#1F3D34"/>
         <path d="M37 31 L32.5 38.5 L41 38.5 Z" fill="#FCFDFD" opacity=".92"/>
         <path d="M52 34 L48.5 39.5 L55.5 39.5 Z" fill="#FCFDFD" opacity=".92"/>
@@ -216,39 +214,31 @@
         <text x="43" y="71" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#A8842F">F5</text>
       </svg>
       <div class="mast-id">
-        <span class="eyebrow">Confidential Briefing · Alpine Desk</span>
-        <h1>Fable 5 <span class="em">Situation</span> Watch</h1>
+        <span class="eyebrow"><span lang="en">Confidential Briefing · Alpine Desk</span><span lang="ru">Конфиденциальная сводка · Альпийский деск</span></span>
+        <h1><span lang="en">Fable 5 <span class="em">Situation</span> Watch</span><span lang="ru">Fable 5 · <span class="em">Хроника</span> ситуации</span></h1>
       </div>
     </div>
     <hr class="rule-gold reveal d2">
     <div class="instrument reveal d2">
       <div class="meta">
-        Dispatched <b>on demand</b> — logged only on a material change.<br>
-        Last verified: <b><span id="updated">2026-06-28 04:12 CEST (02:12 UTC)</span></b>
+        <span lang="en">Dispatched <b>on demand</b> — logged only on a material change.</span><span lang="ru">Обновляется <b>по запросу</b> — только при существенных изменениях.</span><br>
+        <span lang="en">Last verified:</span><span lang="ru">Последняя проверка:</span> <b id="updated">2026-06-28 04:12 CEST (02:12 UTC)</b>
       </div>
       <div class="benchmark">
-        <div class="alt">DAY&nbsp;<span id="dayN">—</span></div>
-        <div class="cap">of the standoff · since the Jun 12 directive</div>
+        <div class="alt"><span lang="en">DAY</span><span lang="ru">ДЕНЬ</span>&nbsp;<span id="dayN">—</span></div>
+        <div class="cap"><span lang="en">of the standoff · since the Jun 12 directive</span><span lang="ru">противостояния · с директивы 12 июня</span></div>
       </div>
     </div>
 
-    <!-- Alpine ridge -->
     <svg class="ridge reveal d3" viewBox="0 0 1000 150" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#D6E6EA"/><stop offset="1" stop-color="#EDF2F2"/>
-        </linearGradient>
-        <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#9FBEC8"/><stop offset="1" stop-color="#BcD2D6"/>
-        </linearGradient>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D6E6EA"/><stop offset="1" stop-color="#EDF2F2"/></linearGradient>
+        <linearGradient id="far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FBEC8"/><stop offset="1" stop-color="#BcD2D6"/></linearGradient>
       </defs>
       <rect width="1000" height="150" fill="url(#sky)"/>
       <circle cx="828" cy="40" r="15" fill="#C6A452" opacity=".85"/>
-      <!-- far ridge -->
       <path d="M0 150 L0 96 L120 60 L230 92 L350 50 L470 88 L600 44 L730 86 L860 56 L1000 90 L1000 150 Z" fill="url(#far)"/>
-      <!-- mid ridge (glacier) -->
       <path d="M0 150 L0 118 L150 78 L300 116 L430 70 L560 110 L690 66 L820 112 L1000 84 L1000 150 Z" fill="#2C6E8E" opacity=".9"/>
-      <!-- front ridge (pine) with snow caps -->
       <path d="M0 150 L0 134 L130 96 L255 132 L360 88 L470 128 L600 92 L735 130 L880 100 L1000 132 L1000 150 Z" fill="#1F3D34"/>
       <path d="M360 88 L344 109 L376 109 Z" fill="#FCFDFD" opacity=".95"/>
       <path d="M600 92 L585 111 L616 111 Z" fill="#FCFDFD" opacity=".95"/>
@@ -259,186 +249,186 @@
   <!-- ================= STATUS BOARD ================= -->
   <div class="board">
     <div class="status hold reveal d2">
-      <span class="model">Claude Fable 5 · public model</span>
-      <div class="state">Suspended</div>
-      <p>The mass-market model is still dark worldwide. Other agencies have cleared its return — but the <b>Pentagon &amp; NSA</b> must still sign off. Reported "on track to return" as soon as this week.</p>
-      <span class="tag" style="color:var(--amber)"><span class="dotpulse"></span>Return imminent · not yet live</span>
+      <span class="model"><span lang="en">Claude Fable 5 · public model</span><span lang="ru">Claude Fable 5 · публичная модель</span></span>
+      <div class="state"><span lang="en">Suspended</span><span lang="ru">Приостановлена</span></div>
+      <p><span lang="en">The mass-market model is still dark worldwide. Other agencies have cleared its return — but the <b>Pentagon &amp; NSA</b> must still sign off. Reported "on track to return" as soon as this week.</span><span lang="ru">Массовая модель по-прежнему отключена по всему миру. Часть ведомств уже одобрила возврат — но <b>Пентагон и АНБ</b> ещё должны дать добро. Сообщается, что возврат возможен уже на этой неделе.</span></p>
+      <span class="tag" style="color:var(--amber)"><span class="dotpulse"></span><span lang="en">Return imminent · not yet live</span><span lang="ru">Возврат близок · ещё не доступна</span></span>
     </div>
     <div class="status ok reveal d3">
-      <span class="model">Claude Mythos 5 · gated model</span>
-      <div class="state">Partially restored</div>
-      <p>Cleared <b>Jun 26</b> by a Commerce Dept letter for redeployment to <b>~100+ vetted U.S. organisations</b> — agencies, Fortune 500, critical-infrastructure defenders — under Project&nbsp;Glasswing, for defensive cyber.</p>
-      <span class="tag" style="color:var(--spruce)">▲ Restored to trusted partners</span>
+      <span class="model"><span lang="en">Claude Mythos 5 · gated model</span><span lang="ru">Claude Mythos 5 · ограниченная модель</span></span>
+      <div class="state"><span lang="en">Partially restored</span><span lang="ru">Частично восстановлена</span></div>
+      <p><span lang="en">Cleared <b>Jun 26</b> by a Commerce Dept letter for redeployment to <b>~100+ vetted U.S. organisations</b> — agencies, Fortune 500, critical-infrastructure defenders — under Project&nbsp;Glasswing, for defensive cyber.</span><span lang="ru">Разрешена <b>26 июня</b> письмом Минторга для развёртывания в <b>~100+ проверенных организациях США</b> — ведомствах, компаниях Fortune 500, операторах критической инфраструктуры — в рамках Project&nbsp;Glasswing, для оборонительной кибербезопасности.</span></p>
+      <span class="tag" style="color:var(--spruce)">▲ <span lang="en">Restored to trusted partners</span><span lang="ru">Восстановлена для доверенных партнёров</span></span>
     </div>
   </div>
   <p style="margin:14px 2px 0;font:400 12.5px/1.6 var(--mono);color:var(--faint)">
-    Unaffected throughout: Opus 4.8, Sonnet 4.6, Haiku 4.5. · Official incident page (status.claude.com) still reads "Monitoring," frozen at Jun 13 00:50 UTC.
+    <span lang="en">Unaffected throughout: Opus 4.8, Sonnet 4.6, Haiku 4.5. · Official incident page (status.claude.com) still reads "Monitoring," frozen at Jun 13 00:50 UTC.</span><span lang="ru">Не затронуты всё это время: Opus 4.8, Sonnet 4.6, Haiku 4.5. · Официальная страница статуса (status.claude.com) по-прежнему показывает «Monitoring», застыв на 13 июня 00:50 UTC.</span>
   </p>
 
   <!-- ================= NAV ================= -->
   <nav class="dossier reveal d3">
-    <a href="#arc">The arc</a>
-    <a href="#timeline">Ascent / timeline</a>
-    <a href="#why">Why it happened</a>
-    <a href="#reactions">The reaction</a>
-    <a href="#sources">Sources</a>
-    <a href="#dispatches">Dispatches</a>
+    <a href="#arc"><span lang="en">The arc</span><span lang="ru">Хроника</span></a>
+    <a href="#timeline"><span lang="en">Ascent / timeline</span><span lang="ru">Хронология</span></a>
+    <a href="#why"><span lang="en">Why it happened</span><span lang="ru">Почему это случилось</span></a>
+    <a href="#reactions"><span lang="en">The reaction</span><span lang="ru">Реакция</span></a>
+    <a href="#sources"><span lang="en">Sources</span><span lang="ru">Источники</span></a>
+    <a href="#dispatches"><span lang="en">Dispatches</span><span lang="ru">Сводки</span></a>
   </nav>
 
-  <!-- ================= THE ARC (REFLECTION) ================= -->
+  <!-- ================= THE ARC ================= -->
   <section id="arc">
     <div class="sec-head">
-      <span class="no">I</span><h2>The arc, in full</h2>
-      <span class="sub">A sixteen-day reflection on the first export control ever applied to an AI model.</span>
+      <span class="no">I</span><h2><span lang="en">The arc, in full</span><span lang="ru">Хроника целиком</span></h2>
+      <span class="sub"><span lang="en">A sixteen-day reflection on the first export control ever applied to an AI model.</span><span lang="ru">Шестнадцать дней осмысления первого в истории экспортного контроля над ИИ-моделью.</span></span>
     </div>
     <div class="essay">
-      <p class="lede">In sixteen days, the most capable model the public had ever been handed became a <span class="em">sovereign-risk event</span> — and bent through nearly every institution that now governs frontier AI.</p>
-      <p>It opened as an ordinary product story. Fable 5 shipped on <b>June 9</b> as the first public "Mythos-class" model, and within a day the complaints were the usual ones: over-zealous guardrails, a <b>silent downgrade</b> to a weaker model mid-conversation, and a viral jailbreak from "Pliny the Liberator." Familiar noise.</p>
-      <p>Then the register changed. In <b>June 11</b> Senate testimony, Sen. Mark Warner relayed that, in a red-team test, Mythos had found its way through "almost all" of a classified government environment "in hours." Whether that was a breach or merely a benchmark is still contested — better reporting since makes clear the model <em>found</em> weaknesses, it did not <em>exploit</em> them — but it reframed everything. This was no longer about refusals; it was about national security.</p>
-      <p>On <b>June 12</b> the Commerce Department reached for export controls — the <b>first time</b> the instrument has been turned on an AI model — barring foreign-national access. Unable to verify nationality at the API layer, Anthropic went dark <b>worldwide in ninety minutes</b>. What followed read less like a tech story than a diplomatic one: a public dispute with the White House, a ~100-signatory security open letter (<code>freefable.org</code>), and a G7 summit where allies confronted the fact that their frontier tools could be switched off overnight — and Paris pushed a "trusted partners" regime in response.</p>
-      <p>Then the thaw. Trump, after meeting Amodei at the G7, said Anthropic was <b>"no longer" a national-security threat</b>. The company and the government converged on guardrails, identity verification, and shared benchmarks. On <b>June 26</b> the first reversal landed: <b>Mythos 5</b> cleared to return to roughly a hundred vetted U.S. defenders. Fable, the public model, is expected back within the week — pending Pentagon and NSA sign-off.</p>
-      <p class="kicker">The throughline: capability outran governance. The "too-powerful" narrative Anthropic marketed became the lever used against it, the oversight it championed boomeranged — and the world learned that an off-switch for frontier AI is now real, and that it lives in Washington.</p>
+      <p class="lede"><span lang="en">In sixteen days, the most capable model the public had ever been handed became a <span class="em">sovereign-risk event</span> — and bent through nearly every institution that now governs frontier AI.</span><span lang="ru">За шестнадцать дней самая мощная модель, когда-либо доступная публике, превратилась в <span class="em">событие суверенного риска</span> — и прошла почти через каждый институт, который теперь управляет передовым ИИ.</span></p>
+      <p><span lang="en">It opened as an ordinary product story. Fable 5 shipped on <b>June 9</b> as the first public "Mythos-class" model, and within a day the complaints were the usual ones: over-zealous guardrails, a <b>silent downgrade</b> to a weaker model mid-conversation, and a viral jailbreak from "Pliny the Liberator." Familiar noise.</span><span lang="ru">Всё началось как обычный запуск продукта. Fable 5 вышла <b>9 июня</b> как первая публичная модель «класса Mythos», и уже через сутки жалобы были привычными: чрезмерно строгие ограничения, <b>тихое понижение</b> до более слабой модели посреди диалога и вирусный джейлбрейк от «Pliny the Liberator». Привычный шум.</span></p>
+      <p><span lang="en">Then the register changed. In <b>June 11</b> Senate testimony, Sen. Mark Warner relayed that, in a red-team test, Mythos had found its way through "almost all" of a classified government environment "in hours." Whether that was a breach or merely a benchmark is still contested — better reporting since makes clear the model <em>found</em> weaknesses, it did not <em>exploit</em> them — but it reframed everything. This was no longer about refusals; it was about national security.</span><span lang="ru">Затем тон сменился. В показаниях Сенату <b>11 июня</b> сенатор Марк Уорнер сообщил, что в ходе red-team-теста Mythos нашла путь почти через все засекреченные системы одного из госведомств «за часы». Был ли это взлом или лишь учебный тест — всё ещё спорно (по более точным сообщениям модель <em>нашла</em> уязвимости, но не <em>использовала</em> их), — но это всё изменило. Речь шла уже не об отказах, а о национальной безопасности.</span></p>
+      <p><span lang="en">On <b>June 12</b> the Commerce Department reached for export controls — the <b>first time</b> the instrument has been turned on an AI model — barring foreign-national access. Unable to verify nationality at the API layer, Anthropic went dark <b>worldwide in ninety minutes</b>. What followed read less like a tech story than a diplomatic one: a public dispute with the White House, a ~100-signatory security open letter (<code>freefable.org</code>), and a G7 summit where allies confronted the fact that their frontier tools could be switched off overnight — and Paris pushed a "trusted partners" regime in response.</span><span lang="ru">12 июня Министерство торговли применило экспортный контроль — <b>впервые</b> этот инструмент был направлен против ИИ-модели — запретив доступ иностранным гражданам. Не имея возможности проверять гражданство на уровне API, Anthropic отключила модели <b>по всему миру за девяносто минут</b>. Дальше это была уже не столько технологическая история, сколько дипломатическая: публичный спор с Белым домом, открытое письмо ~100 специалистов по безопасности (<code>freefable.org</code>) и саммит G7, где союзники осознали, что их передовые инструменты могут отключить за одну ночь — и Париж в ответ предложил режим «доверенных партнёров».</span></p>
+      <p><span lang="en">Then the thaw. Trump, after meeting Amodei at the G7, said Anthropic was <b>"no longer" a national-security threat</b>. The company and the government converged on guardrails, identity verification, and shared benchmarks. On <b>June 26</b> the first reversal landed: <b>Mythos 5</b> cleared to return to roughly a hundred vetted U.S. defenders. Fable, the public model, is expected back within the week — pending Pentagon and NSA sign-off.</span><span lang="ru">Затем — оттепель. Трамп после встречи с Амодеи на G7 заявил, что Anthropic <b>«больше не» угроза национальной безопасности</b>. Компания и власти сошлись на защитных мерах, проверке личности и общих бенчмарках. <b>26 июня</b> случился первый разворот: <b>Mythos 5</b> разрешили вернуть примерно сотне проверенных защитников в США. Fable, публичную модель, ожидают обратно в течение недели — при условии одобрения Пентагона и АНБ.</span></p>
+      <p class="kicker"><span lang="en">The throughline: capability outran governance. The "too-powerful" narrative Anthropic marketed became the lever used against it, the oversight it championed boomeranged — and the world learned that an off-switch for frontier AI is now real, and that it lives in Washington.</span><span lang="ru">Главная мысль: возможности обогнали управление. Нарратив «слишком мощно», который продвигала Anthropic, стал рычагом против неё самой, а надзор, за который она ратовала, обернулся бумерангом — и мир узнал, что «выключатель» для передового ИИ теперь реален и находится в Вашингтоне.</span></p>
     </div>
   </section>
 
   <!-- ================= TIMELINE ================= -->
   <section id="timeline">
     <div class="sec-head">
-      <span class="no">II</span><h2>The ascent</h2>
-      <span class="sub">Launch to partial restoration — the climb, benchmark by benchmark.</span>
+      <span class="no">II</span><h2><span lang="en">The ascent</span><span lang="ru">Восхождение</span></h2>
+      <span class="sub"><span lang="en">Launch to partial restoration — the climb, benchmark by benchmark.</span><span lang="ru">От запуска до частичного восстановления — подъём, отметка за отметкой.</span></span>
     </div>
     <ul class="ascent">
-      <li><time>Jun 9</time><div class="ev">Fable 5 &amp; Mythos 5 released; Fable goes GA in GitHub Copilot — the first public "Mythos-class" frontier model.</div></li>
-      <li><time>Jun 10</time><div class="ev">Over-refusal backlash and the "silent sabotage" downgrade controversy; Pliny's jailbreak &amp; ~120k-char system-prompt leak. Amodei publishes a call for mandatory third-party testing.</div></li>
-      <li class="peak"><time>Jun 11 · the real trigger (unverified)</time><div class="ev"><b>Sen. Mark Warner</b> tells a hearing that NSA/Cyber Command chief Gen. Joshua Rudd said Mythos "broke into almost all of our classified systems… in hours" in a red-team test. No incident report; experts dispute the framing.</div></li>
-      <li><time>Jun 12 · 5:21 PM ET</time><div class="ev">Amazon's Andy Jassy flags the finding to Treasury; Commerce Sec. <b>Lutnick → Amodei</b> issues the export-control directive. By midnight both models are dark for <b>every</b> user worldwide.</div></li>
-      <li><time>Jun 16–17</time><div class="ev">First White-House response (Sacks): fix the jailbreak → controls lift. Goes multilateral at the <b>G7 (Evian)</b> — a "trusted partners" framework floated; Macron pledges a Western platform within ~a month.</div></li>
-      <li><time>Jun 19</time><div class="ev"><b>Thaw at the top:</b> after meeting Amodei at the G7, Trump tells Axios that Anthropic is "no longer" a national-security threat and "very responsible."</div></li>
-      <li class="peak"><time>Jun 26 → now</time><div class="ev"><b>Partial reversal:</b> Commerce clears <b>Mythos 5</b> for ~100+ vetted U.S. orgs (Project Glasswing). <b>Fable 5</b> still suspended — "on track to return soon," pending Pentagon &amp; NSA.</div></li>
+      <li><time><span lang="en">Jun 9</span><span lang="ru">9 июня</span></time><div class="ev"><span lang="en">Fable 5 &amp; Mythos 5 released; Fable goes GA in GitHub Copilot — the first public "Mythos-class" frontier model.</span><span lang="ru">Выпущены Fable 5 и Mythos 5; Fable становится общедоступной в GitHub Copilot — первая публичная передовая модель «класса Mythos».</span></div></li>
+      <li><time><span lang="en">Jun 10</span><span lang="ru">10 июня</span></time><div class="ev"><span lang="en">Over-refusal backlash and the "silent sabotage" downgrade controversy; Pliny's jailbreak &amp; ~120k-char system-prompt leak. Amodei publishes a call for mandatory third-party testing.</span><span lang="ru">Волна недовольства из-за чрезмерных отказов и «тихого саботажа» (понижение модели); джейлбрейк Pliny и утечка системного промпта (~120 тыс. символов). Амодеи публикует призыв к обязательному стороннему тестированию.</span></div></li>
+      <li class="peak"><time><span lang="en">Jun 11 · the real trigger (unverified)</span><span lang="ru">11 июня · настоящий триггер (не подтверждён)</span></time><div class="ev"><span lang="en"><b>Sen. Mark Warner</b> tells a hearing that NSA/Cyber Command chief Gen. Joshua Rudd said Mythos "broke into almost all of our classified systems… in hours" in a red-team test. No incident report; experts dispute the framing.</span><span lang="ru"><b>Сенатор Марк Уорнер</b> заявляет на слушаниях, что глава АНБ/Киберкомандования ген. Джошуа Радд сказал ему: Mythos «проникла почти во все наши засекреченные системы… за часы» в ходе red-team-теста. Официального отчёта нет; эксперты оспаривают формулировку.</span></div></li>
+      <li><time><span lang="en">Jun 12 · 5:21 PM ET</span><span lang="ru">12 июня · 17:21 ET</span></time><div class="ev"><span lang="en">Amazon's Andy Jassy flags the finding to Treasury; Commerce Sec. <b>Lutnick → Amodei</b> issues the export-control directive. By midnight both models are dark for <b>every</b> user worldwide.</span><span lang="ru">Эндрю Джасси из Amazon сообщает о находке в Минфин; министр торговли <b>Латник → Амодеи</b> выпускает директиву об экспортном контроле. К полуночи обе модели отключены для <b>всех</b> в мире.</span></div></li>
+      <li><time><span lang="en">Jun 16–17</span><span lang="ru">16–17 июня</span></time><div class="ev"><span lang="en">First White-House response (Sacks): fix the jailbreak → controls lift. Goes multilateral at the <b>G7 (Evian)</b> — a "trusted partners" framework floated; Macron pledges a Western platform within ~a month.</span><span lang="ru">Первая реакция Белого дома (Сакс): исправьте джейлбрейк → ограничения снимут. Выходит на многосторонний уровень на <b>G7 (Эвиан)</b> — обсуждается схема «доверенных партнёров»; Макрон обещает западную платформу примерно за месяц.</span></div></li>
+      <li><time><span lang="en">Jun 19</span><span lang="ru">19 июня</span></time><div class="ev"><span lang="en"><b>Thaw at the top:</b> after meeting Amodei at the G7, Trump tells Axios that Anthropic is "no longer" a national-security threat and "very responsible."</span><span lang="ru"><b>Оттепель на самом верху:</b> после встречи с Амодеи на G7 Трамп говорит Axios, что Anthropic «больше не» угроза нацбезопасности и «ведёт себя очень ответственно».</span></div></li>
+      <li class="peak"><time><span lang="en">Jun 26 → now</span><span lang="ru">26 июня → сейчас</span></time><div class="ev"><span lang="en"><b>Partial reversal:</b> Commerce clears <b>Mythos 5</b> for ~100+ vetted U.S. orgs (Project Glasswing). <b>Fable 5</b> still suspended — "on track to return soon," pending Pentagon &amp; NSA.</span><span lang="ru"><b>Первый разворот:</b> Минторг разрешает <b>Mythos 5</b> для ~100+ проверенных организаций США (Project Glasswing). <b>Fable 5</b> всё ещё приостановлена — «на пути к скорому возвращению», ожидает Пентагон и АНБ.</span></div></li>
     </ul>
   </section>
 
   <!-- ================= WHY IT HAPPENED ================= -->
   <section id="why">
     <div class="sec-head">
-      <span class="no">III</span><h2>Why it happened</h2>
-      <span class="sub">Architecture, the silent downgrade, the jailbreak, and the red-team claim.</span>
+      <span class="no">III</span><h2><span lang="en">Why it happened</span><span lang="ru">Почему это случилось</span></h2>
+      <span class="sub"><span lang="en">Architecture, the silent downgrade, the jailbreak, and the red-team claim.</span><span lang="ru">Архитектура, тихое понижение, джейлбрейк и заявление о red-team.</span></span>
     </div>
     <div class="card">
-      <p><b>One model, two products.</b> Fable 5 and Mythos 5 are the <b>same underlying model</b>, split by a layer of safety classifiers: locked-down Fable 5 for the public, less-restricted Mythos 5 for ~100 vetted partners (Project Glasswing). That gating is exactly what the government just re-authorised for Mythos while holding Fable back.</p>
-      <p><b>The "silent sabotage."</b> When a query tripped a high-risk classifier, Fable 5 <b>silently routed it to the weaker Opus 4.8</b> mid-session — no notice, no override. Researchers (Nathan Lambert, Jeremy Howard) called it categorically misaligned; Anthropic later made the fallback visible but did not remove it.</p>
-      <p><b>The jailbreak that lit the fuse.</b> "Pliny the Liberator" leaked Fable's full system prompt via multi-agent decomposition + Unicode homoglyphs. Anthropic <b>disputes the severity</b> — refusal-coaxing surfacing already-public info, capability "widely available from other models including GPT-5.5," with the hardest safeguards held in independent classifiers. Security researcher <b>Katie Moussouris</b> agreed: "It's not a jailbreak."</p>
-      <p><b>The claim that changed the stakes.</b> The disproportionate response is best explained by the <b>June 11 red-team testimony</b> — Mythos reportedly finding vulnerabilities across classified systems "in hours." Crucial caveat: this remains <b>unverified</b> (no incident report, no NSA/CISA bulletin) and finding a weakness is not the same as exploiting it — "the NSA wasn't hacked by AI."</p>
+      <p><span lang="en"><b>One model, two products.</b> Fable 5 and Mythos 5 are the <b>same underlying model</b>, split by a layer of safety classifiers: locked-down Fable 5 for the public, less-restricted Mythos 5 for ~100 vetted partners (Project Glasswing). That gating is exactly what the government just re-authorised for Mythos while holding Fable back.</span><span lang="ru"><b>Одна модель, два продукта.</b> Fable 5 и Mythos 5 — это <b>одна и та же базовая модель</b>, разделённая слоем защитных классификаторов: строго ограниченная Fable 5 для публики и менее ограниченная Mythos 5 для ~100 проверенных партнёров (Project Glasswing). Именно это разграничение власти только что заново разрешили для Mythos, придержав Fable.</span></p>
+      <p><span lang="en"><b>The "silent sabotage."</b> When a query tripped a high-risk classifier, Fable 5 <b>silently routed it to the weaker Opus 4.8</b> mid-session — no notice, no override. Researchers (Nathan Lambert, Jeremy Howard) called it categorically misaligned; Anthropic later made the fallback visible but did not remove it.</span><span lang="ru"><b>«Тихий саботаж».</b> Когда запрос срабатывал на классификатор высокого риска, Fable 5 <b>тихо переключала его на более слабую Opus 4.8</b> посреди сессии — без уведомления и без возможности отмены. Исследователи (Нейтан Ламберт, Джереми Ховард) назвали это принципиально рассогласованным поведением; позже Anthropic сделала переключение видимым, но не убрала его.</span></p>
+      <p><span lang="en"><b>The jailbreak that lit the fuse.</b> "Pliny the Liberator" leaked Fable's full system prompt via multi-agent decomposition + Unicode homoglyphs. Anthropic <b>disputes the severity</b> — refusal-coaxing surfacing already-public info, capability "widely available from other models including GPT-5.5," with the hardest safeguards held in independent classifiers. Security researcher <b>Katie Moussouris</b> agreed: "It's not a jailbreak."</span><span lang="ru"><b>Джейлбрейк, который поджёг фитиль.</b> «Pliny the Liberator» извлёк полный системный промпт Fable через многоагентную декомпозицию и юникод-омоглифы. Anthropic <b>оспаривает серьёзность</b> — это выманивание ответов, выдающее уже общедоступную информацию; возможности «широко доступны и в других моделях, включая GPT-5.5», а самые надёжные предохранители держатся в независимых классификаторах. Эксперт по безопасности <b>Кэти Муссурис</b> согласилась: «Это не джейлбрейк».</span></p>
+      <p><span lang="en"><b>The claim that changed the stakes.</b> The disproportionate response is best explained by the <b>June 11 red-team testimony</b> — Mythos reportedly finding vulnerabilities across classified systems "in hours." Crucial caveat: this remains <b>unverified</b> (no incident report, no NSA/CISA bulletin) and finding a weakness is not the same as exploiting it — "the NSA wasn't hacked by AI."</span><span lang="ru"><b>Заявление, изменившее ставки.</b> Несоразмерную реакцию лучше всего объясняют <b>показания о red-team-тесте от 11 июня</b> — Mythos якобы находила уязвимости в засекреченных системах «за часы». Важная оговорка: это <b>не подтверждено</b> (нет ни отчёта об инциденте, ни бюллетеня АНБ/CISA), а найти слабое место — не то же самое, что им воспользоваться: «АНБ не взламывал ИИ».</span></p>
     </div>
   </section>
 
   <!-- ================= THE REACTION ================= -->
   <section id="reactions">
     <div class="sec-head">
-      <span class="no">IV</span><h2>The reaction</h2>
-      <span class="sub">One event, read a dozen ways — and three ironies underneath.</span>
+      <span class="no">IV</span><h2><span lang="en">The reaction</span><span lang="ru">Реакция</span></h2>
+      <span class="sub"><span lang="en">One event, read a dozen ways — and three ironies underneath.</span><span lang="ru">Одно событие, прочитанное десятком способов — и три иронии под ним.</span></span>
     </div>
     <div class="boom">
-      <span class="label">The three boomerangs</span>
+      <span class="label"><span lang="en">The three boomerangs</span><span lang="ru">Три бумеранга</span></span>
       <ol>
-        <li><b>The danger narrative.</b> Anthropic marketed Mythos as <em>too powerful to release</em>. The government took it at its word — and now Anthropic must argue its own model <em>down</em>.</li>
-        <li><b>The regulation it championed.</b> Anthropic pushed hardest for oversight; the blunt, ad-hoc version landed on it first. NSPM-11 forbids any vendor disabling AI the U.S. relies on — yet Washington forced exactly that on allies.</li>
-        <li><b>Its own backer pulled the trigger.</b> The shutdown was reportedly set off by Amazon's Andy Jassy — Anthropic's $13B investor, board member, AWS host <em>and</em> Nova competitor.</li>
+        <li><span lang="en"><b>The danger narrative.</b> Anthropic marketed Mythos as <em>too powerful to release</em>. The government took it at its word — and now Anthropic must argue its own model <em>down</em>.</span><span lang="ru"><b>Нарратив об опасности.</b> Anthropic подавала Mythos как <em>слишком мощную для релиза</em>. Власти поверили на слово — и теперь Anthropic приходится <em>приуменьшать</em> собственную модель.</span></li>
+        <li><span lang="en"><b>The regulation it championed.</b> Anthropic pushed hardest for oversight; the blunt, ad-hoc version landed on it first. NSPM-11 forbids any vendor disabling AI the U.S. relies on — yet Washington forced exactly that on allies.</span><span lang="ru"><b>Регулирование, за которое она ратовала.</b> Anthropic активнее всех добивалась надзора; грубая, импровизированная его версия первой ударила по ней. NSPM-11 запрещает любому поставщику отключать ИИ, от которого зависят США, — а Вашингтон навязал ровно это союзникам.</span></li>
+        <li><span lang="en"><b>Its own backer pulled the trigger.</b> The shutdown was reportedly set off by Amazon's Andy Jassy — Anthropic's $13B investor, board member, AWS host <em>and</em> Nova competitor.</span><span lang="ru"><b>Спусковой крючок нажал её же инвестор.</b> Отключение, по сообщениям, инициировал Эндрю Джасси из Amazon — инвестор Anthropic на $13 млрд, член совета директоров, хостер AWS <em>и</em> конкурент с Nova.</span></li>
       </ol>
     </div>
     <div class="camps">
-      <div class="camp"><h4>Inevitable, not a mistake</h4><p class="stance">National-security realists — resigned, not cheering.</p><p class="voice">Tom Tugendhat: "…sovereignty is more about code than cannons."</p></div>
-      <div class="camp"><h4>Dangerous overreach</h4><p class="stance">Precedent alarmists — the loudest camp.</p><p class="voice">Gary Marcus: "wildly overdramatic and counterproductive."</p></div>
-      <div class="camp"><h4>Build your own</h4><p class="stance">Sovereignty awakening, read abroad as a dependence warning.</p><p class="voice">Sridhar Vembu: "Bharat must find her own way." Sarvam: "don't confuse access with ownership."</p></div>
-      <div class="camp"><h4>Safety theatre, exposed</h4><p class="stance">Cynics — the danger framing was always marketing.</p><p class="voice">Dean Ball: "raises the status of the argument that AI safety has been hype." Gebru: "safety theater."</p></div>
-      <div class="camp"><h4>Secret sabotage</h4><p class="stance">Researcher revolt — pre-dates the ban.</p><p class="voice">Lambert: a model that "gets less intelligent without notifying me is categorically misaligned."</p></div>
-      <div class="camp"><h4>It blocked us at hello</h4><p class="stance">Everyday users — comedy of over-refusals.</p><p class="voice">"cancer" flagged as a biosecurity risk; "Hello" rejected. Anthropic: "the wrong tradeoff."</p></div>
-      <div class="camp"><h4>Told you so</h4><p class="stance">Open-source camp — vindication.</p><p class="voice">Locally-hosted weights "cannot be remotely disabled."</p></div>
-      <div class="camp"><h4>A refund is no substitute</h4><p class="stance">Paying customers — trust, not money, is the wound.</p><p class="voice">The tool "can disappear overnight for reasons that have nothing to do with their own behaviour."</p></div>
+      <div class="camp"><h4><span lang="en">Inevitable, not a mistake</span><span lang="ru">Неизбежно, а не ошибка</span></h4><p class="stance"><span lang="en">National-security realists — resigned, not cheering.</span><span lang="ru">Реалисты нацбезопасности — со смирением, не с ликованием.</span></p><p class="voice"><span lang="en">Tom Tugendhat: "…sovereignty is more about code than cannons."</span><span lang="ru">Том Тугендхат: «…суверенитет — это скорее код, чем пушки».</span></p></div>
+      <div class="camp"><h4><span lang="en">Dangerous overreach</span><span lang="ru">Опасный перегиб</span></h4><p class="stance"><span lang="en">Precedent alarmists — the loudest camp.</span><span lang="ru">Тревога о прецеденте — самый громкий лагерь.</span></p><p class="voice"><span lang="en">Gary Marcus: "wildly overdramatic and counterproductive."</span><span lang="ru">Гэри Маркус: «дико преувеличенно и контрпродуктивно».</span></p></div>
+      <div class="camp"><h4><span lang="en">Build your own</span><span lang="ru">Стройте своё</span></h4><p class="stance"><span lang="en">Sovereignty awakening, read abroad as a dependence warning.</span><span lang="ru">Пробуждение суверенитета; за рубежом — предупреждение о зависимости.</span></p><p class="voice"><span lang="en">Sridhar Vembu: "Bharat must find her own way." Sarvam: "don't confuse access with ownership."</span><span lang="ru">Шридхар Вембу: «Бхарат должна найти свой путь». Sarvam: «не путайте доступ с владением».</span></p></div>
+      <div class="camp"><h4><span lang="en">Safety theatre, exposed</span><span lang="ru">Разоблачённый театр безопасности</span></h4><p class="stance"><span lang="en">Cynics — the danger framing was always marketing.</span><span lang="ru">Циники — нарратив об опасности всегда был маркетингом.</span></p><p class="voice"><span lang="en">Dean Ball: "raises the status of the argument that AI safety has been hype." Gebru: "safety theater."</span><span lang="ru">Дин Болл: «поднимает статус довода, что ИИ-безопасность — это хайп». Гебру: «театр безопасности».</span></p></div>
+      <div class="camp"><h4><span lang="en">Secret sabotage</span><span lang="ru">Тайный саботаж</span></h4><p class="stance"><span lang="en">Researcher revolt — pre-dates the ban.</span><span lang="ru">Бунт исследователей — начался ещё до запрета.</span></p><p class="voice"><span lang="en">Lambert: a model that "gets less intelligent without notifying me is categorically misaligned."</span><span lang="ru">Ламберт: модель, которая «глупеет без уведомления, принципиально рассогласована».</span></p></div>
+      <div class="camp"><h4><span lang="en">It blocked us at hello</span><span lang="ru">Заблокировали на «привет»</span></h4><p class="stance"><span lang="en">Everyday users — comedy of over-refusals.</span><span lang="ru">Обычные пользователи — комедия отказов.</span></p><p class="voice"><span lang="en">"cancer" flagged as a biosecurity risk; "Hello" rejected. Anthropic: "the wrong tradeoff."</span><span lang="ru">«cancer» помечено как биориск; «Hello» отклонено. Anthropic: «неверный компромисс».</span></p></div>
+      <div class="camp"><h4><span lang="en">Told you so</span><span lang="ru">Я же говорил</span></h4><p class="stance"><span lang="en">Open-source camp — vindication.</span><span lang="ru">Лагерь open-source — торжество.</span></p><p class="voice"><span lang="en">Locally-hosted weights "cannot be remotely disabled."</span><span lang="ru">Локально размещённые веса «нельзя отключить удалённо».</span></p></div>
+      <div class="camp"><h4><span lang="en">A refund is no substitute</span><span lang="ru">Возврат денег — не замена</span></h4><p class="stance"><span lang="en">Paying customers — trust, not money, is the wound.</span><span lang="ru">Платящие клиенты — рана в доверии, а не в деньгах.</span></p><p class="voice"><span lang="en">The tool "can disappear overnight for reasons that have nothing to do with their own behaviour."</span><span lang="ru">Инструмент «может исчезнуть за ночь по причинам, не связанным с их поведением».</span></p></div>
     </div>
-    <p class="platforms"><b>Where the noise lived:</b> <b>Hacker News</b> split between "unusable… refusals" and Simon Willison's "something of a beast" praise · <b>Reddit</b> mourned blocked research and pleaded for its return · <b>X</b> was loudest (Pliny, scientists, politicians) · <b>LinkedIn / enterprise</b> fixated on governance risk — safety that can be "overridden overnight."</p>
+    <p class="platforms"><span lang="en"><b>Where the noise lived:</b> <b>Hacker News</b> split between "unusable… refusals" and Simon Willison's "something of a beast" praise · <b>Reddit</b> mourned blocked research and pleaded for its return · <b>X</b> was loudest (Pliny, scientists, politicians) · <b>LinkedIn / enterprise</b> fixated on governance risk — safety that can be "overridden overnight."</span><span lang="ru"><b>Где шумели:</b> <b>Hacker News</b> разделился между «непригодно… из-за отказов» и похвалой Саймона Уиллисона «настоящий зверь» · <b>Reddit</b> оплакивал заблокированные исследования и умолял вернуть модель · <b>X</b> был громче всех (Pliny, учёные, политики) · <b>LinkedIn</b> и корпоративный сегмент — о риске управляемости: безопасность, которую «можно отменить за ночь».</span></p>
   </section>
 
   <!-- ================= SOURCES ================= -->
   <section id="sources">
     <div class="sec-head">
-      <span class="no">V</span><h2>Sources</h2>
-      <span class="sub">Anchored to primary statements &amp; reputable outlets; SEO/AI-spam excluded.</span>
+      <span class="no">V</span><h2><span lang="en">Sources</span><span lang="ru">Источники</span></h2>
+      <span class="sub"><span lang="en">Anchored to primary statements &amp; reputable outlets; SEO/AI-spam excluded.</span><span lang="ru">Опираемся на первоисточники и авторитетные издания; SEO/ИИ-спам исключён.</span></span>
     </div>
     <div class="ledger">
-      <a href="https://www.anthropic.com/news/fable-mythos-access"><span class="pill primary">Primary</span>Anthropic — Statement on the US government directive</a>
-      <a href="https://status.claude.com/"><span class="pill primary">Primary</span>Claude Status — incident "Monitoring"</a>
-      <a href="https://www.nbcnews.com/tech/tech-news/us-government-gives-anthropic-green-light-limited-re-release-mythos-5-rcna352018"><span class="pill">News</span>NBC News — limited re-release of Mythos 5 cleared (Jun 26)</a>
-      <a href="https://techcrunch.com/2026/06/26/trump-admin-releases-anthropic-mythos-to-be-used-by-more-than-100-us-companies-agencies/"><span class="pill">News</span>TechCrunch — Mythos cleared for 100+ US companies &amp; agencies</a>
-      <a href="https://money.usnews.com/investing/news/articles/2026-06-27/us-close-to-allowing-anthropic-to-restore-fable-5-model-axios-reports"><span class="pill">News</span>Reuters / US News — US close to allowing Fable 5 to return (Jun 27)</a>
-      <a href="https://www.cnbc.com/2026/06/19/trump-tells-axios-he-no-longer-views-anthropic-as-national-security-threat.html"><span class="pill">News</span>CNBC — Trump: Anthropic "no longer" a national-security threat</a>
-      <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-powerful-mythos-ai-reportedly-breached-almost-all-nsa-classified-systems-within-a-few-hours-during-red-team-test-report-sheds-more-light-on-the-u-s-governments-sudden-ban-on-the-flagship-models"><span class="pill">News</span>Tom's Hardware — Mythos red-team finding across classified systems</a>
-      <a href="https://san.com/cc/no-the-nsa-wasnt-hacked-by-ai-heres-what-actually-happened/"><span class="pill">Context</span>Straight Arrow News — "No, the NSA wasn't hacked by AI"</a>
-      <a href="https://fortune.com/2026/06/15/fix-this-code-three-words-behind-us-government-shut-down-anthropic-fable-mythos-ai-models-katie-moussouris-open-letter/"><span class="pill">Analysis</span>Fortune — "Fix this code"; the Moussouris open letter</a>
-      <a href="https://www.theglobeandmail.com/business/article-anthropic-trump-officials-deal-restore-fable-5-mythos-5/"><span class="pill">News</span>Globe and Mail — working toward a deal to restore access</a>
-      <a href="https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/"><span class="pill">Analysis</span>SecurityWeek — Anthropic disputes the jailbreak</a>
-      <a href="https://www.interconnects.ai/p/claude-fable-5-and-new-ai-safety"><span class="pill">Analysis</span>Interconnects (N. Lambert) — the new safety fables</a>
+      <a href="https://www.anthropic.com/news/fable-mythos-access"><span class="pill primary"><span lang="en">Primary</span><span lang="ru">Первоисточник</span></span>Anthropic — Statement on the US government directive</a>
+      <a href="https://status.claude.com/"><span class="pill primary"><span lang="en">Primary</span><span lang="ru">Первоисточник</span></span>Claude Status — incident "Monitoring"</a>
+      <a href="https://www.nbcnews.com/tech/tech-news/us-government-gives-anthropic-green-light-limited-re-release-mythos-5-rcna352018"><span class="pill"><span lang="en">News</span><span lang="ru">Новости</span></span>NBC News — limited re-release of Mythos 5 cleared (Jun 26)</a>
+      <a href="https://techcrunch.com/2026/06/26/trump-admin-releases-anthropic-mythos-to-be-used-by-more-than-100-us-companies-agencies/"><span class="pill"><span lang="en">News</span><span lang="ru">Новости</span></span>TechCrunch — Mythos cleared for 100+ US companies &amp; agencies</a>
+      <a href="https://money.usnews.com/investing/news/articles/2026-06-27/us-close-to-allowing-anthropic-to-restore-fable-5-model-axios-reports"><span class="pill"><span lang="en">News</span><span lang="ru">Новости</span></span>Reuters / US News — US close to allowing Fable 5 to return (Jun 27)</a>
+      <a href="https://www.cnbc.com/2026/06/19/trump-tells-axios-he-no-longer-views-anthropic-as-national-security-threat.html"><span class="pill"><span lang="en">News</span><span lang="ru">Новости</span></span>CNBC — Trump: Anthropic "no longer" a national-security threat</a>
+      <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-powerful-mythos-ai-reportedly-breached-almost-all-nsa-classified-systems-within-a-few-hours-during-red-team-test-report-sheds-more-light-on-the-u-s-governments-sudden-ban-on-the-flagship-models"><span class="pill"><span lang="en">News</span><span lang="ru">Новости</span></span>Tom's Hardware — Mythos red-team finding across classified systems</a>
+      <a href="https://san.com/cc/no-the-nsa-wasnt-hacked-by-ai-heres-what-actually-happened/"><span class="pill"><span lang="en">Context</span><span lang="ru">Контекст</span></span>Straight Arrow News — "No, the NSA wasn't hacked by AI"</a>
+      <a href="https://fortune.com/2026/06/15/fix-this-code-three-words-behind-us-government-shut-down-anthropic-fable-mythos-ai-models-katie-moussouris-open-letter/"><span class="pill"><span lang="en">Analysis</span><span lang="ru">Аналитика</span></span>Fortune — "Fix this code"; the Moussouris open letter</a>
+      <a href="https://www.theglobeandmail.com/business/article-anthropic-trump-officials-deal-restore-fable-5-mythos-5/"><span class="pill"><span lang="en">News</span><span lang="ru">Новости</span></span>Globe and Mail — working toward a deal to restore access</a>
+      <a href="https://www.securityweek.com/anthropic-disputes-fable-5-ai-jailbreak/"><span class="pill"><span lang="en">Analysis</span><span lang="ru">Аналитика</span></span>SecurityWeek — Anthropic disputes the jailbreak</a>
+      <a href="https://www.interconnects.ai/p/claude-fable-5-and-new-ai-safety"><span class="pill"><span lang="en">Analysis</span><span lang="ru">Аналитика</span></span>Interconnects (N. Lambert) — the new safety fables</a>
     </div>
   </section>
 
   <!-- ================= DISPATCHES ================= -->
   <section id="dispatches">
     <div class="sec-head">
-      <span class="no">VI</span><h2>Dispatches</h2>
-      <span class="sub">Newest first — logged only on a material change.</span>
+      <span class="no">VI</span><h2><span lang="en">Dispatches</span><span lang="ru">Сводки</span></h2>
+      <span class="sub"><span lang="en">Newest first — logged only on a material change.</span><span lang="ru">Сначала новые — фиксируются только существенные изменения.</span></span>
     </div>
     <div class="watch-note">
-      🛰 <b>On-demand watch.</b> Re-checked when the operator asks; recorded here only on a status flip, a new official statement, a directive change, a court/agency action, or a substantive development. Routine no-change checks aren't logged. <b>Current standing:</b> Mythos 5 partially restored (Jun 26); Fable 5 suspended, return reported imminent.
+      🛰 <span lang="en"><b>On-demand watch.</b> Re-checked when the operator asks; recorded here only on a status flip, a new official statement, a directive change, a court/agency action, or a substantive development. Routine no-change checks aren't logged. <b>Current standing:</b> Mythos 5 partially restored (Jun 26); Fable 5 suspended, return reported imminent.</span><span lang="ru"><b>Наблюдение по запросу.</b> Проверяется, когда просит оператор; фиксируется только при смене статуса, новом официальном заявлении, изменении директивы, действии суда/ведомства или существенном развитии. Рутинные проверки без изменений не логируются. <b>Текущее положение:</b> Mythos 5 частично восстановлена (26 июня); Fable 5 приостановлена, возврат, по сообщениям, близок.</span>
     </div>
     <div class="log" id="log">
       <div class="entry">
         <span class="ts">2026-06-28</span>
-        <h3>First reversal: Mythos 5 partially restored; Fable 5 "on track to return"</h3>
-        <p>On <b>Jun 26</b>, a Commerce Dept letter from Sec. Lutnick cleared <b>Mythos 5</b> to be redeployed to <b>~100+ vetted U.S. organisations</b> (agencies, Fortune 500, research institutions, critical-infrastructure operators) under Project Glasswing — the government citing confidence in Anthropic's guardrails. The public model, <b>Fable 5, remains suspended</b>, but per Axios its limits "could be lifted as soon as this coming week," with <b>Pentagon &amp; NSA sign-off</b> still outstanding. status.claude.com still reads "Monitoring."</p>
+        <h3><span lang="en">First reversal: Mythos 5 partially restored; Fable 5 "on track to return"</span><span lang="ru">Первый разворот: Mythos 5 частично восстановлена; Fable 5 «на пути к возвращению»</span></h3>
+        <p><span lang="en">On <b>Jun 26</b>, a Commerce Dept letter from Sec. Lutnick cleared <b>Mythos 5</b> to be redeployed to <b>~100+ vetted U.S. organisations</b> (agencies, Fortune 500, research institutions, critical-infrastructure operators) under Project Glasswing — the government citing confidence in Anthropic's guardrails. The public model, <b>Fable 5, remains suspended</b>, but per Axios its limits "could be lifted as soon as this coming week," with <b>Pentagon &amp; NSA sign-off</b> still outstanding. status.claude.com still reads "Monitoring."</span><span lang="ru">26 июня письмом министра торговли Латника разрешено развернуть <b>Mythos 5</b> для <b>~100+ проверенных организаций США</b> (ведомства, Fortune 500, научные институты, операторы критической инфраструктуры) в рамках Project Glasswing — власти заявили о доверии к защитным мерам Anthropic. Публичная модель <b>Fable 5 остаётся приостановленной</b>, но по данным Axios ограничения «могут снять уже на этой неделе»; одобрение <b>Пентагона и АНБ</b> ещё не получено. status.claude.com по-прежнему показывает «Monitoring».</span></p>
         <p class="srcs">NBC News · TechCrunch · Reuters/US News (Axios) · Cybernews</p>
       </div>
       <div class="entry">
         <span class="ts">2026-06-23</span>
-        <h3>The likely real trigger surfaces — explosive, but unverified</h3>
-        <p>Reporting ties the ban to <b>June 11 Senate testimony</b>: Sen. Warner said NSA chief Gen. Rudd told him Mythos "broke into almost all of our classified systems… in hours" in a red-team test. <b>Heavy caveat:</b> unverified, no incident report, and experts dispute the framing. Separately, Trump's <b>June 2 Executive Order</b> sets a ~<b>Aug 1</b> deadline for a classified "covered frontier model" pre-brief framework — the lane Anthropic would join to be reinstated.</p>
+        <h3><span lang="en">The likely real trigger surfaces — explosive, but unverified</span><span lang="ru">Всплывает вероятный настоящий триггер — громкий, но не подтверждён</span></h3>
+        <p><span lang="en">Reporting ties the ban to <b>June 11 Senate testimony</b>: Sen. Warner said NSA chief Gen. Rudd told him Mythos "broke into almost all of our classified systems… in hours" in a red-team test. <b>Heavy caveat:</b> unverified, no incident report, and experts dispute the framing. Separately, Trump's <b>June 2 Executive Order</b> sets a ~<b>Aug 1</b> deadline for a classified "covered frontier model" pre-brief framework — the lane Anthropic would join to be reinstated.</span><span lang="ru">Сообщения связывают запрет с <b>показаниями Сенату 11 июня</b>: сенатор Уорнер заявил, что глава АНБ ген. Радд сказал ему, что Mythos «проникла почти во все наши засекреченные системы… за часы» в ходе red-team-теста. <b>Важная оговорка:</b> не подтверждено, отчёта нет, эксперты оспаривают формулировку. Отдельно: указ Трампа от <b>2 июня</b> задаёт срок ~<b>1 августа</b> для закрытой схемы предварительного брифинга по «передовым моделям» — путь, к которому Anthropic присоединилась бы ради восстановления.</span></p>
         <p class="srcs">Tom's Hardware · Digg (dispute) · CNBC (June 2 EO)</p>
       </div>
       <div class="entry">
         <span class="ts">2026-06-22</span>
-        <h3>Two cracks in the freeze — a thaw and a path back</h3>
-        <p>In a pre-taped Axios interview (<b>Jun 19</b>), Trump said Anthropic is <b>"no longer" a national-security threat</b> and "very responsible." Separately, Anthropic added <b>identity verification</b> (gov-ID + biometric) from <b>Jul 8</b> — read as a path for verified U.S. users to regain access. Caveat: the Jun 12 order and the Pentagon's March supply-chain designation both still stood.</p>
+        <h3><span lang="en">Two cracks in the freeze — a thaw and a path back</span><span lang="ru">Две трещины в заморозке — оттепель и путь назад</span></h3>
+        <p><span lang="en">In a pre-taped Axios interview (<b>Jun 19</b>), Trump said Anthropic is <b>"no longer" a national-security threat</b> and "very responsible." Separately, Anthropic added <b>identity verification</b> (gov-ID + biometric) from <b>Jul 8</b> — read as a path for verified U.S. users to regain access. Caveat: the Jun 12 order and the Pentagon's March supply-chain designation both still stood.</span><span lang="ru">В записанном заранее интервью Axios (<b>19 июня</b>) Трамп сказал, что Anthropic <b>«больше не» угроза нацбезопасности</b> и «очень ответственна». Отдельно Anthropic ввела <b>проверку личности</b> (госдокумент + биометрия) с <b>8 июля</b> — её сочли путём для проверенных пользователей из США вернуть доступ. Оговорка: директива от 12 июня и мартовская маркировка Пентагона тогда ещё действовали.</span></p>
         <p class="srcs">CNBC · Axios · CIO</p>
       </div>
       <div class="entry">
         <span class="ts">2026-06-20</span>
-        <h3>Anthropic projects "coming days"</h3>
-        <p>At a Seoul press conference (<b>Jun 17</b>), MD-International <b>Chris Ciauri</b> said the firm is "very confident that in the coming days, the models will become available again" — the first near-term signal from Anthropic's own side, though no fix details were given.</p>
+        <h3><span lang="en">Anthropic projects "coming days"</span><span lang="ru">Anthropic обещает «в ближайшие дни»</span></h3>
+        <p><span lang="en">At a Seoul press conference (<b>Jun 17</b>), MD-International <b>Chris Ciauri</b> said the firm is "very confident that in the coming days, the models will become available again" — the first near-term signal from Anthropic's own side, though no fix details were given.</span><span lang="ru">На пресс-конференции в Сеуле (<b>17 июня</b>) управляющий директор по международным рынкам <b>Крис Чаури</b> заявил, что компания «очень уверена, что в ближайшие дни модели снова станут доступны» — первый близкий сигнал со стороны самой Anthropic, хотя деталей исправления не дали.</span></p>
         <p class="srcs">Korea JoongAng Daily</p>
       </div>
       <div class="entry">
         <span class="ts">2026-06-18</span>
-        <h3>The negotiation goes multilateral at the G7</h3>
-        <p>At the <b>Evian G7</b>, Lutnick floated a <b>"trusted partners"</b> framework for vetted allied access to controlled US models; Amodei &amp; DeepMind's Hassabis called for a U.S.-led AI coalition (Canada said yes); and Macron pledged a Western platform within <b>~a month</b>, reconvening in September.</p>
+        <h3><span lang="en">The negotiation goes multilateral at the G7</span><span lang="ru">Переговоры выходят на многосторонний уровень на G7</span></h3>
+        <p><span lang="en">At the <b>Evian G7</b>, Lutnick floated a <b>"trusted partners"</b> framework for vetted allied access to controlled US models; Amodei &amp; DeepMind's Hassabis called for a U.S.-led AI coalition (Canada said yes); and Macron pledged a Western platform within <b>~a month</b>, reconvening in September.</span><span lang="ru">На <b>G7 в Эвиане</b> Латник предложил схему <b>«доверенных партнёров»</b> для проверенного доступа союзников к контролируемым моделям США; Амодеи и Хассабис (DeepMind) призвали к коалиции по ИИ во главе с США (Канада согласилась); Макрон пообещал западную платформу примерно <b>за месяц</b> с новой встречей в сентябре.</span></p>
         <p class="srcs">CNBC · Globe and Mail · Reuters/US News · Euronews</p>
       </div>
       <div class="entry">
         <span class="ts">2026-06-16</span>
-        <h3>First substantive White-House response</h3>
-        <p>White-House AI czar <b>David Sacks</b> said the export control was issued "reluctantly" and that it's "surprising Anthropic hasn't wanted to cooperate with a reasonable safety request," laying out the path: fix the jailbreak → control lifted → Fable returns. Anthropic held its line.</p>
+        <h3><span lang="en">First substantive White-House response</span><span lang="ru">Первая содержательная реакция Белого дома</span></h3>
+        <p><span lang="en">White-House AI czar <b>David Sacks</b> said the export control was issued "reluctantly" and that it's "surprising Anthropic hasn't wanted to cooperate with a reasonable safety request," laying out the path: fix the jailbreak → control lifted → Fable returns. Anthropic held its line.</span><span lang="ru">ИИ-советник Белого дома <b>Дэвид Сакс</b> заявил, что экспортный контроль ввели «неохотно» и что «удивительно, что Anthropic не хочет идти навстречу разумной просьбе по безопасности», обозначив путь: исправить джейлбрейк → ограничения снимут → Fable вернётся. Anthropic осталась при своём.</span></p>
         <p class="srcs">Benzinga · CNBC</p>
       </div>
       <div class="entry">
         <span class="ts">2026-06-13</span>
-        <h3>Initial report — the export-control directive</h3>
-        <p>Confirmed via Anthropic's primary statement + the Claude status page: a U.S. export-control directive (Jun 12, 5:21 PM ET; Lutnick → Amodei) suspended both models over a suspected jailbreak. Anthropic disagreed but complied. Axios reported the trigger as a separate company's Mythos jailbreak claim.</p>
+        <h3><span lang="en">Initial report — the export-control directive</span><span lang="ru">Первый отчёт — директива об экспортном контроле</span></h3>
+        <p><span lang="en">Confirmed via Anthropic's primary statement + the Claude status page: a U.S. export-control directive (Jun 12, 5:21 PM ET; Lutnick → Amodei) suspended both models over a suspected jailbreak. Anthropic disagreed but complied. Axios reported the trigger as a separate company's Mythos jailbreak claim.</span><span lang="ru">Подтверждено заявлением Anthropic и страницей статуса Claude: директива США об экспортном контроле (12 июня, 17:21 ET; Латник → Амодеи) приостановила обе модели из-за предполагаемого джейлбрейка. Anthropic не согласилась, но подчинилась. Axios сообщил, что триггером стало заявление другой компании о джейлбрейке Mythos.</span></p>
         <p class="srcs">Anthropic · CNBC · NBC · Axios</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="colophon">Fable 5 Situation Watch — maintained on demand, verified against primary sources.</div>
-    <div class="fine">An independent watch · not affiliated with Anthropic · lower-tier SEO sources deliberately excluded from load-bearing claims.</div>
+    <div class="colophon"><span lang="en">Fable 5 Situation Watch — maintained on demand, verified against primary sources.</span><span lang="ru">Fable 5 Situation Watch — ведётся по запросу, проверяется по первоисточникам.</span></div>
+    <div class="fine"><span lang="en">An independent watch · not affiliated with Anthropic · lower-tier SEO sources deliberately excluded from load-bearing claims.</span><span lang="ru">Независимое наблюдение · не связано с Anthropic · второсортные SEO-источники исключены из значимых утверждений.</span></div>
   </footer>
 
 </div>
@@ -448,8 +438,31 @@
     var start = Date.UTC(2026, 5, 12, 21, 21, 0);
     var ms = Date.now() - start;
     var el = document.getElementById('dayN');
-    if (!el) return;
-    el.textContent = ms < 0 ? '0' : (Math.floor(ms / 86400000) + 1);
+    if (el) el.textContent = ms < 0 ? '0' : (Math.floor(ms / 86400000) + 1);
+  })();
+
+  // Language switch — persisted, graceful EN fallback.
+  (function () {
+    var KEY = 'fw-lang';
+    var TITLES = { en: 'Fable 5 Situation Watch — Alpine Desk', ru: 'Fable 5 · Хроника ситуации — Альпийский деск' };
+    function apply(l) {
+      l = (l === 'ru') ? 'ru' : 'en';
+      var h = document.documentElement;
+      h.setAttribute('data-lang', l);
+      h.setAttribute('lang', l);
+      document.title = TITLES[l];
+      var btns = document.querySelectorAll('[data-lang-btn]');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-lang-btn') === l ? 'true' : 'false');
+      }
+      try { localStorage.setItem(KEY, l); } catch (e) {}
+    }
+    var saved; try { saved = localStorage.getItem(KEY); } catch (e) {}
+    apply(saved || ((navigator.language || 'en').slice(0, 2) === 'ru' ? 'ru' : 'en'));
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-lang-btn]');
+      if (b) apply(b.getAttribute('data-lang-btn'));
+    });
   })();
 </script>
 </body>
