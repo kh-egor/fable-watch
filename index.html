@@ -86,6 +86,15 @@
   .dotpulse{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:pulse 2.2s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(178,133,44,.45)}70%{box-shadow:0 0 0 9px rgba(178,133,44,0)}100%{box-shadow:0 0 0 0 rgba(178,133,44,0)}}
 
+  /* ---------- RESTORED RIBBON ---------- */
+  .restored-banner{display:flex;align-items:center;gap:13px;margin:26px 0 0;padding:15px 22px;
+    background:linear-gradient(90deg,rgba(62,207,142,.18),rgba(62,207,142,.03));
+    border:1px solid rgba(46,125,91,.5);border-radius:14px;color:#1c5741;font:500 14.5px/1.5 var(--sans)}
+  .restored-banner .rb-dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto;background:var(--spruce);
+    box-shadow:0 0 0 0 rgba(62,207,142,.6);animation:okpulse 2.4s infinite}
+  .restored-banner b{color:#123f2e;font-weight:600}
+  @keyframes okpulse{0%{box-shadow:0 0 0 0 rgba(62,207,142,.55)}70%{box-shadow:0 0 0 10px rgba(62,207,142,0)}100%{box-shadow:0 0 0 0 rgba(62,207,142,0)}}
+
   /* ---------- SECTIONS ---------- */
   section{margin:60px 0 0;scroll-margin-top:18px}
   .sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
@@ -173,7 +182,7 @@
     .topbar{justify-content:flex-start}
   }
   @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}.dotpulse{animation:none}
+    html{scroll-behavior:auto}.dotpulse,.rb-dot{animation:none}
     .reveal{opacity:1!important;transform:none!important}
   }
   .reveal{opacity:0;transform:translateY(10px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
@@ -215,11 +224,11 @@
     <div class="instrument reveal d2">
       <div class="meta">
         <span data-i18n="meta1">Dispatched <b>on demand</b> — logged only on a material change.</span><br>
-        <span data-i18n="meta2">Last verified:</span> <b id="updated">2026-06-28 04:12 CEST (02:12 UTC)</b>
+        <span data-i18n="meta2">Last verified:</span> <b id="updated">2026-07-01 19:20 CEST (17:20 UTC)</b>
       </div>
       <div class="benchmark">
-        <div class="alt"><span data-i18n="dayLabel">DAY</span>&nbsp;<span id="dayN">—</span></div>
-        <div class="cap" data-i18n="dayCap">of the standoff · since the Jun 12 directive</div>
+        <div class="alt"><span data-i18n="dayLabel">DAY</span>&nbsp;<span id="dayN">18</span></div>
+        <div class="cap" data-i18n="dayCap">standoff · resolved Jun 30 ✓</div>
       </div>
     </div>
 
@@ -239,21 +248,23 @@
     </svg>
   </header>
 
+  <div class="restored-banner reveal d2"><span class="rb-dot"></span><span data-i18n="restoredBanner">✓ <b>Access restored.</b> The U.S. lifted export controls on Jun 30; Fable 5 is returning globally (Jul 1), Mythos 5 to approved U.S. orgs — the 18-day standoff is over.</span></div>
+
   <div class="board">
-    <div class="status hold reveal d2">
+    <div class="status ok reveal d2">
       <span class="model" data-i18n="fableModel">Claude Fable 5 · public model</span>
-      <div class="state" data-i18n="fableState">Suspended</div>
-      <p data-i18n="fableDesc">The mass-market model is still dark worldwide. Other agencies have cleared its return — but the <b>Pentagon &amp; NSA</b> must still sign off. Reported "on track to return" as soon as this week.</p>
-      <span class="tag" style="color:var(--amber)"><span class="dotpulse"></span><span data-i18n="fableTag">Return imminent · not yet live</span></span>
+      <div class="state" data-i18n="fableState">Restored</div>
+      <p data-i18n="fableDesc">Export controls lifted <b>Jun 30</b>. Fable 5 is <b>returning globally</b> from <b>Jul 1</b> — across Claude.ai, the Claude Platform, Claude Code &amp; Cowork, with AWS, Google Cloud &amp; Microsoft Foundry to follow.</p>
+      <span class="tag" style="color:var(--spruce)">▲ <span data-i18n="fableTag">Restored globally · rolling out</span></span>
     </div>
     <div class="status ok reveal d3">
       <span class="model" data-i18n="mythosModel">Claude Mythos 5 · gated model</span>
-      <div class="state" data-i18n="mythosState">Partially restored</div>
-      <p data-i18n="mythosDesc">Cleared <b>Jun 26</b> by a Commerce Dept letter for redeployment to <b>~100+ vetted U.S. organisations</b> — agencies, Fortune 500, critical-infrastructure defenders — under Project&nbsp;Glasswing, for defensive cyber.</p>
+      <div class="state" data-i18n="mythosState">Restored</div>
+      <p data-i18n="mythosDesc">Controls lifted <b>Jun 30</b>. The gated variant returns to <b>~100+ approved U.S. organisations</b> — agencies, Fortune 500, critical-infrastructure defenders — under Project&nbsp;Glasswing, following government review. Not a public release.</p>
       <span class="tag" style="color:var(--spruce)">▲ <span data-i18n="mythosTag">Restored to trusted partners</span></span>
     </div>
   </div>
-  <p style="margin:14px 2px 0;font:400 12.5px/1.6 var(--mono);color:var(--faint)" data-i18n="unaffected">Unaffected throughout: Opus 4.8, Sonnet 4.6, Haiku 4.5. · Official incident page (status.claude.com) still reads "Monitoring," frozen at Jun 13 00:50 UTC.</p>
+  <p style="margin:14px 2px 0;font:400 12.5px/1.6 var(--mono);color:var(--faint)" data-i18n="unaffected">The 18-day standoff ended after Anthropic retuned a single safety filter to block the flagged technique; Commerce's CAISI reviewed the safeguards before lifting controls. Opus 4.8, Sonnet 4.6 &amp; Haiku 4.5 were unaffected throughout.</p>
 
   <nav class="dossier reveal d3">
     <a href="#arc" data-i18n="nav1">The arc</a>
@@ -271,7 +282,7 @@
       <p data-i18n="arcP1">It opened as an ordinary product story. Fable 5 shipped on <b>June 9</b> as the first public "Mythos-class" model, and within a day the complaints were the usual ones: over-zealous guardrails, a <b>silent downgrade</b> to a weaker model mid-conversation, and a viral jailbreak from "Pliny the Liberator." Familiar noise.</p>
       <p data-i18n="arcP2">Then the register changed. In <b>June 11</b> Senate testimony, Sen. Mark Warner relayed that, in a red-team test, Mythos had found its way through "almost all" of a classified government environment "in hours." Whether that was a breach or merely a benchmark is still contested — better reporting since makes clear the model <em>found</em> weaknesses, it did not <em>exploit</em> them — but it reframed everything. This was no longer about refusals; it was about national security.</p>
       <p data-i18n="arcP3">On <b>June 12</b> the Commerce Department reached for export controls — the <b>first time</b> the instrument has been turned on an AI model — barring foreign-national access. Unable to verify nationality at the API layer, Anthropic went dark <b>worldwide in ninety minutes</b>. What followed read less like a tech story than a diplomatic one: a public dispute with the White House, a ~100-signatory security open letter (<code>freefable.org</code>), and a G7 summit where allies confronted the fact that their frontier tools could be switched off overnight — and Paris pushed a "trusted partners" regime in response.</p>
-      <p data-i18n="arcP4">Then the thaw. Trump, after meeting Amodei at the G7, said Anthropic was <b>"no longer" a national-security threat</b>. The company and the government converged on guardrails, identity verification, and shared benchmarks. On <b>June 26</b> the first reversal landed: <b>Mythos 5</b> cleared to return to roughly a hundred vetted U.S. defenders. Fable, the public model, is expected back within the week — pending Pentagon and NSA sign-off.</p>
+      <p data-i18n="arcP4">Then the thaw. Trump, after meeting Amodei at the G7, said Anthropic was <b>"no longer" a national-security threat</b>. The company and the government converged on guardrails, identity verification, and shared benchmarks. On <b>June 26</b> the first reversal landed: <b>Mythos 5</b> cleared to return to roughly a hundred vetted U.S. defenders. Then, on <b>June 30</b>, the controls came off entirely — Commerce lifted the export order on both models, and <b>Fable 5 began returning globally on July 1</b>, ending an 18-day standoff resolved by a single retuned safety filter.</p>
       <p class="kicker" data-i18n="kicker">The throughline: capability outran governance. The "too-powerful" narrative Anthropic marketed became the lever used against it, the oversight it championed boomeranged — and the world learned that an off-switch for frontier AI is now real, and that it lives in Washington.</p>
     </div>
   </section>
@@ -285,7 +296,8 @@
       <li><time data-i18n="tl4t">Jun 12 · 5:21 PM ET</time><div class="ev" data-i18n="tl4e">Amazon's Andy Jassy flags the finding to Treasury; Commerce Sec. <b>Lutnick → Amodei</b> issues the export-control directive. By midnight both models are dark for <b>every</b> user worldwide.</div></li>
       <li><time data-i18n="tl5t">Jun 16–17</time><div class="ev" data-i18n="tl5e">First White-House response (Sacks): fix the jailbreak → controls lift. Goes multilateral at the <b>G7 (Evian)</b> — a "trusted partners" framework floated; Macron pledges a Western platform within ~a month.</div></li>
       <li><time data-i18n="tl6t">Jun 19</time><div class="ev" data-i18n="tl6e"><b>Thaw at the top:</b> after meeting Amodei at the G7, Trump tells Axios that Anthropic is "no longer" a national-security threat and "very responsible."</div></li>
-      <li class="peak"><time data-i18n="tl7t">Jun 26 → now</time><div class="ev" data-i18n="tl7e"><b>Partial reversal:</b> Commerce clears <b>Mythos 5</b> for ~100+ vetted U.S. orgs (Project Glasswing). <b>Fable 5</b> still suspended — "on track to return soon," pending Pentagon &amp; NSA.</div></li>
+      <li><time data-i18n="tl7t">Jun 26</time><div class="ev" data-i18n="tl7e"><b>Partial reversal:</b> Commerce clears <b>Mythos 5</b> for ~100+ vetted U.S. orgs (Project Glasswing). <b>Fable 5</b> still suspended — "on track to return soon," pending Pentagon &amp; NSA.</div></li>
+      <li class="peak"><time data-i18n="tl8t">Jun 30 → Jul 1 · resolved</time><div class="ev" data-i18n="tl8e"><b>Standoff over.</b> Commerce lifts export controls on <b>both</b> models. <b>Fable 5 restored globally</b> (Jul 1 — Claude.ai, Platform, Code, Cowork; clouds to follow); Mythos 5 returns to approved U.S. orgs. The fix: a single safety filter retuned to the flagged technique, reviewed by Commerce's CAISI.</div></li>
     </ul>
   </section>
 
@@ -342,8 +354,9 @@
 
   <section id="dispatches">
     <div class="sec-head"><span class="no">VI</span><h2 data-i18n="secDispH">Dispatches</h2><span class="sub" data-i18n="secDispSub">Newest first — logged only on a material change.</span></div>
-    <div class="watch-note">🛰 <span data-i18n="watchNote"><b>On-demand watch.</b> Re-checked when the operator asks; recorded here only on a status flip, a new official statement, a directive change, a court/agency action, or a substantive development. Routine no-change checks aren't logged. <b>Current standing:</b> Mythos 5 partially restored (Jun 26); Fable 5 suspended, return reported imminent.</span></div>
+    <div class="watch-note">🛰 <span data-i18n="watchNote"><b>On-demand watch.</b> Recorded here only on a material change. <b>Resolved:</b> the U.S. lifted export controls on Jun 30; Fable 5 restored globally (Jul 1), Mythos 5 to approved U.S. orgs — the 18-day standoff is over.</span></div>
     <div class="log" id="log">
+      <div class="entry"><span class="ts">2026-07-01</span><h3 data-i18n="d0h">RESOLVED — U.S. lifts export controls; Fable 5 restored globally</h3><p data-i18n="d0p">On <b>Jun 30</b> the Department of Commerce lifted the export controls on <b>both</b> Claude Fable 5 and Mythos 5. Anthropic began restoring access <b>Jul 1</b>: <b>Fable 5 returns globally</b> (Claude.ai, Claude Platform, Claude Code, Cowork; AWS, Google Cloud &amp; Microsoft Foundry to follow), while <b>Mythos 5</b> returns to ~100+ approved U.S. organisations. The 18-day standoff was resolved by a single safety filter, retuned to block the one technique Amazon flagged and reviewed by Commerce's CAISI. <b>Fable 5 is back.</b></p><p class="srcs">Anthropic · CNBC · NBC News · Tom's Hardware · TheNextWeb</p></div>
       <div class="entry"><span class="ts">2026-06-28</span><h3 data-i18n="d1h">First reversal: Mythos 5 partially restored; Fable 5 "on track to return"</h3><p data-i18n="d1p">On <b>Jun 26</b>, a Commerce Dept letter from Sec. Lutnick cleared <b>Mythos 5</b> to be redeployed to <b>~100+ vetted U.S. organisations</b> (agencies, Fortune 500, research institutions, critical-infrastructure operators) under Project Glasswing — the government citing confidence in Anthropic's guardrails. The public model, <b>Fable 5, remains suspended</b>, but per Axios its limits "could be lifted as soon as this coming week," with <b>Pentagon &amp; NSA sign-off</b> still outstanding. status.claude.com still reads "Monitoring."</p><p class="srcs">NBC News · TechCrunch · Reuters/US News (Axios) · Cybernews</p></div>
       <div class="entry"><span class="ts">2026-06-23</span><h3 data-i18n="d2h">The likely real trigger surfaces — explosive, but unverified</h3><p data-i18n="d2p">Reporting ties the ban to <b>June 11 Senate testimony</b>: Sen. Warner said NSA chief Gen. Rudd told him Mythos "broke into almost all of our classified systems… in hours" in a red-team test. <b>Heavy caveat:</b> unverified, no incident report, and experts dispute the framing. Separately, Trump's <b>June 2 Executive Order</b> sets a ~<b>Aug 1</b> deadline for a classified "covered frontier model" pre-brief framework — the lane Anthropic would join to be reinstated.</p><p class="srcs">Tom's Hardware · Digg (dispute) · CNBC (June 2 EO)</p></div>
       <div class="entry"><span class="ts">2026-06-22</span><h3 data-i18n="d3h">Two cracks in the freeze — a thaw and a path back</h3><p data-i18n="d3p">In a pre-taped Axios interview (<b>Jun 19</b>), Trump said Anthropic is <b>"no longer" a national-security threat</b> and "very responsible." Separately, Anthropic added <b>identity verification</b> (gov-ID + biometric) from <b>Jul 8</b> — read as a path for verified U.S. users to regain access. Caveat: the Jun 12 order and the Pentagon's March supply-chain designation both still stood.</p><p class="srcs">CNBC · Axios · CIO</p></div>
@@ -363,10 +376,9 @@
 <script src="i18n.js"></script>
 <script>
   (function () {
-    var start = Date.UTC(2026, 5, 12, 21, 21, 0);
-    var ms = Date.now() - start;
+    // Standoff resolved Jun 30 (controls lifted) — frozen at its 18-day length.
     var el = document.getElementById('dayN');
-    if (el) el.textContent = ms < 0 ? '0' : (Math.floor(ms / 86400000) + 1);
+    if (el) el.textContent = '18';
   })();
   (function () {
     var KEY = 'fw-lang';

@@ -392,3 +392,96 @@ window.FW_I18N = {
     footFine: `Un monitoraggio indipendente · non affiliato ad Anthropic · fonti SEO di basso livello deliberatamente escluse dalle affermazioni portanti.`
   }
 };
+
+/* ── 2026-07-01 update: export controls lifted, Fable 5 restored. Overrides/adds keys. ── */
+(function () {
+  var U = {
+    ru: {
+      restoredBanner: `✓ <b>Доступ восстановлен.</b> США сняли экспортный контроль 30 июня; Fable 5 возвращается глобально (1 июля), Mythos 5 — для одобренных организаций США — 18-дневное противостояние окончено.`,
+      fableState: `Восстановлена`,
+      fableDesc: `Экспортный контроль снят <b>30 июня</b>. Fable 5 <b>возвращается глобально</b> с <b>1 июля</b> — в Claude.ai, на платформе Claude, в Claude Code и Cowork; AWS, Google Cloud и Microsoft Foundry следом.`,
+      fableTag: `Восстановлена глобально · разворачивается`,
+      mythosState: `Восстановлена`,
+      mythosDesc: `Контроль снят <b>30 июня</b>. Ограниченный вариант возвращается для <b>~100+ одобренных организаций США</b> — ведомств, компаний Fortune 500, операторов критической инфраструктуры — в рамках Project&nbsp;Glasswing, после проверки властями. Не публичный релиз.`,
+      dayCap: `противостояния · разрешено 30 июня ✓`,
+      unaffected: `18-дневное противостояние завершилось после того, как Anthropic перенастроила единственный защитный фильтр под отмеченную технику; CAISI при Минторге проверил меры перед снятием контроля. Opus 4.8, Sonnet 4.6 и Haiku 4.5 не были затронуты всё это время.`,
+      tl7t: `26 июня`,
+      tl8t: `30 июня → 1 июля · разрешено`,
+      tl8e: `<b>Противостояние окончено.</b> Минторг снимает экспортный контроль с <b>обеих</b> моделей. <b>Fable 5 восстановлена глобально</b> (1 июля — Claude.ai, платформа, Code, Cowork; облака следом); Mythos 5 возвращается для одобренных организаций США. Решение: единственный защитный фильтр, перенастроенный под отмеченную технику и проверенный CAISI при Минторге.`,
+      arcP4: `Затем — оттепель. Трамп после встречи с Амодеи на G7 заявил, что Anthropic <b>«больше не» угроза национальной безопасности</b>. Компания и власти сошлись на защитных мерах, проверке личности и общих бенчмарках. <b>26 июня</b> случился первый разворот: <b>Mythos 5</b> разрешили вернуть примерно сотне проверенных защитников в США. А <b>30 июня</b> контроль сняли полностью — Минторг отменил экспортный приказ для обеих моделей, и <b>Fable 5 начала возвращаться глобально 1 июля</b>, завершив 18-дневное противостояние, разрешённое единственным перенастроенным защитным фильтром.`,
+      watchNote: `<b>Наблюдение по запросу.</b> Фиксируется только при существенных изменениях. <b>Разрешено:</b> США сняли экспортный контроль 30 июня; Fable 5 восстановлена глобально (1 июля), Mythos 5 — для одобренных организаций США — 18-дневное противостояние окончено.`,
+      d0h: `РАЗРЕШЕНО — США снимают экспортный контроль; Fable 5 восстановлена глобально`,
+      d0p: `<b>30 июня</b> Министерство торговли сняло экспортный контроль с <b>обеих</b> моделей — Claude Fable 5 и Mythos 5. Anthropic начала восстанавливать доступ <b>1 июля</b>: <b>Fable 5 возвращается глобально</b> (Claude.ai, платформа Claude, Claude Code, Cowork; AWS, Google Cloud и Microsoft Foundry следом), а <b>Mythos 5</b> — для ~100+ одобренных организаций США. 18-дневное противостояние решил единственный защитный фильтр, перенастроенный под отмеченную Amazon технику и проверенный CAISI при Минторге. <b>Fable 5 снова доступна.</b>`
+    },
+    de: {
+      restoredBanner: `✓ <b>Zugang wiederhergestellt.</b> Die USA hoben die Exportkontrollen am 30. Juni auf; Fable 5 kehrt weltweit zurück (1. Juli), Mythos 5 für zugelassene US-Organisationen — die 18-tägige Pattsituation ist vorbei.`,
+      fableState: `Wiederhergestellt`,
+      fableDesc: `Exportkontrollen am <b>30. Juni</b> aufgehoben. Fable 5 <b>kehrt ab dem 1. Juli weltweit zurück</b> — in Claude.ai, der Claude-Plattform, Claude Code &amp; Cowork; AWS, Google Cloud &amp; Microsoft Foundry folgen.`,
+      fableTag: `Weltweit wiederhergestellt · Rollout läuft`,
+      mythosState: `Wiederhergestellt`,
+      mythosDesc: `Kontrollen am <b>30. Juni</b> aufgehoben. Die eingeschränkte Variante kehrt zu <b>~100+ zugelassenen US-Organisationen</b> zurück — Behörden, Fortune 500, Betreiber kritischer Infrastruktur — im Rahmen von Project&nbsp;Glasswing, nach behördlicher Prüfung. Keine öffentliche Freigabe.`,
+      dayCap: `Pattsituation · gelöst am 30. Juni ✓`,
+      unaffected: `Die 18-tägige Pattsituation endete, nachdem Anthropic einen einzelnen Sicherheitsfilter auf die gemeldete Technik neu abgestimmt hatte; das CAISI des Handelsministeriums prüfte die Schutzmechanismen vor der Aufhebung. Opus 4.8, Sonnet 4.6 &amp; Haiku 4.5 waren durchgehend nicht betroffen.`,
+      tl7t: `26. Juni`,
+      tl8t: `30. Juni → 1. Juli · gelöst`,
+      tl8e: `<b>Pattsituation vorbei.</b> Das Handelsministerium hebt die Exportkontrollen für <b>beide</b> Modelle auf. <b>Fable 5 weltweit wiederhergestellt</b> (1. Juli — Claude.ai, Plattform, Code, Cowork; Clouds folgen); Mythos 5 kehrt zu zugelassenen US-Organisationen zurück. Die Lösung: ein einzelner, auf die gemeldete Technik neu abgestimmter Sicherheitsfilter, geprüft vom CAISI des Handelsministeriums.`,
+      arcP4: `Dann das Tauwetter. Trump erklärte nach dem Treffen mit Amodei beim G7, Anthropic sei <b>„nicht länger" eine Gefahr für die nationale Sicherheit</b>. Unternehmen und Regierung einigten sich auf Schutzschranken, Identitätsprüfung und gemeinsame Benchmarks. Am <b>26. Juni</b> kam die erste Kehrtwende: <b>Mythos 5</b> durfte zu rund hundert geprüften US-Verteidigern zurückkehren. Dann, am <b>30. Juni</b>, fielen die Kontrollen ganz — das Handelsministerium hob die Exportanordnung für beide Modelle auf, und <b>Fable 5 kehrte ab dem 1. Juli weltweit zurück</b> und beendete eine 18-tägige Pattsituation, gelöst durch einen einzigen neu abgestimmten Sicherheitsfilter.`,
+      watchNote: `<b>Beobachtung auf Anfrage.</b> Nur bei wesentlichen Änderungen vermerkt. <b>Gelöst:</b> Die USA hoben die Exportkontrollen am 30. Juni auf; Fable 5 weltweit wiederhergestellt (1. Juli), Mythos 5 für zugelassene US-Organisationen — die 18-tägige Pattsituation ist vorbei.`,
+      d0h: `GELÖST — USA heben Exportkontrollen auf; Fable 5 weltweit wiederhergestellt`,
+      d0p: `Am <b>30. Juni</b> hob das Handelsministerium die Exportkontrollen für <b>beide</b> Modelle auf — Claude Fable 5 und Mythos 5. Anthropic begann am <b>1. Juli</b> mit der Wiederherstellung: <b>Fable 5 kehrt weltweit zurück</b> (Claude.ai, Claude-Plattform, Claude Code, Cowork; AWS, Google Cloud &amp; Microsoft Foundry folgen), während <b>Mythos 5</b> zu ~100+ zugelassenen US-Organisationen zurückkehrt. Die 18-tägige Pattsituation löste ein einzelner Sicherheitsfilter, neu abgestimmt auf die von Amazon gemeldete Technik und vom CAISI des Handelsministeriums geprüft. <b>Fable 5 ist zurück.</b>`
+    },
+    fr: {
+      restoredBanner: `✓ <b>Accès rétabli.</b> Les États-Unis ont levé les contrôles à l'exportation le 30 juin ; Fable 5 revient dans le monde entier (1er juillet), Mythos 5 pour les organisations américaines agréées — le bras de fer de 18 jours est terminé.`,
+      fableState: `Rétabli`,
+      fableDesc: `Contrôles à l'exportation levés le <b>30 juin</b>. Fable 5 <b>revient dans le monde entier</b> à partir du <b>1er juillet</b> — sur Claude.ai, la plateforme Claude, Claude Code &amp; Cowork ; AWS, Google Cloud &amp; Microsoft Foundry suivront.`,
+      fableTag: `Rétabli mondialement · déploiement en cours`,
+      mythosState: `Rétabli`,
+      mythosDesc: `Contrôles levés le <b>30 juin</b>. La variante restreinte revient auprès de <b>~100+ organisations américaines agréées</b> — agences, Fortune 500, opérateurs d'infrastructures critiques — dans le cadre de Project&nbsp;Glasswing, après examen gouvernemental. Pas une sortie publique.`,
+      dayCap: `de bras de fer · résolu le 30 juin ✓`,
+      unaffected: `Le bras de fer de 18 jours a pris fin après qu'Anthropic a réajusté un unique filtre de sécurité sur la technique signalée ; le CAISI du Commerce a examiné les garde-fous avant la levée. Opus 4.8, Sonnet 4.6 &amp; Haiku 4.5 n'ont jamais été affectés.`,
+      tl7t: `26 juin`,
+      tl8t: `30 juin → 1er juillet · résolu`,
+      tl8e: `<b>Bras de fer terminé.</b> Le Commerce lève les contrôles à l'exportation sur les <b>deux</b> modèles. <b>Fable 5 rétabli mondialement</b> (1er juillet — Claude.ai, plateforme, Code, Cowork ; clouds à suivre) ; Mythos 5 revient auprès des organisations américaines agréées. La solution : un unique filtre de sécurité réajusté sur la technique signalée, examiné par le CAISI du Commerce.`,
+      arcP4: `Puis le dégel. Trump, après avoir rencontré Amodei au G7, a déclaré qu'Anthropic n'était <b>« plus » une menace pour la sécurité nationale</b>. L'entreprise et le gouvernement ont convergé sur des garde-fous, la vérification d'identité et des référentiels communs. Le <b>26 juin</b>, le premier revirement est tombé : <b>Mythos 5</b> autorisé à revenir auprès d'une centaine de défenseurs américains agréés. Puis, le <b>30 juin</b>, les contrôles ont été entièrement levés — le Commerce a annulé l'ordre d'exportation sur les deux modèles, et <b>Fable 5 a commencé à revenir mondialement le 1er juillet</b>, mettant fin à un bras de fer de 18 jours résolu par un unique filtre de sécurité réajusté.`,
+      watchNote: `<b>Veille à la demande.</b> Consignée uniquement en cas de changement substantiel. <b>Résolu :</b> les États-Unis ont levé les contrôles à l'exportation le 30 juin ; Fable 5 rétabli mondialement (1er juillet), Mythos 5 pour les organisations américaines agréées — le bras de fer de 18 jours est terminé.`,
+      d0h: `RÉSOLU — les États-Unis lèvent les contrôles à l'exportation ; Fable 5 rétabli mondialement`,
+      d0p: `Le <b>30 juin</b>, le Département du Commerce a levé les contrôles à l'exportation sur les <b>deux</b> modèles — Claude Fable 5 et Mythos 5. Anthropic a commencé à rétablir l'accès le <b>1er juillet</b> : <b>Fable 5 revient mondialement</b> (Claude.ai, plateforme Claude, Claude Code, Cowork ; AWS, Google Cloud &amp; Microsoft Foundry à suivre), tandis que <b>Mythos 5</b> revient auprès de ~100+ organisations américaines agréées. Le bras de fer de 18 jours a été résolu par un unique filtre de sécurité, réajusté pour bloquer la technique signalée par Amazon et examiné par le CAISI du Commerce. <b>Fable 5 est de retour.</b>`
+    },
+    uk: {
+      restoredBanner: `✓ <b>Доступ відновлено.</b> США зняли експортний контроль 30 червня; Fable 5 повертається глобально (1 липня), Mythos 5 — для схвалених організацій США — 18-денне протистояння завершено.`,
+      fableState: `Відновлено`,
+      fableDesc: `Експортний контроль знято <b>30 червня</b>. Fable 5 <b>повертається глобально</b> з <b>1 липня</b> — у Claude.ai, на платформі Claude, у Claude Code та Cowork; AWS, Google Cloud і Microsoft Foundry — згодом.`,
+      fableTag: `Відновлено глобально · розгортається`,
+      mythosState: `Відновлено`,
+      mythosDesc: `Контроль знято <b>30 червня</b>. Обмежений варіант повертається до <b>~100+ схвалених організацій США</b> — відомств, компаній Fortune 500, операторів критичної інфраструктури — у межах Project&nbsp;Glasswing, після перевірки владою. Не публічний реліз.`,
+      dayCap: `протистояння · вирішено 30 червня ✓`,
+      unaffected: `18-денне протистояння завершилося після того, як Anthropic переналаштувала єдиний захисний фільтр під позначену техніку; CAISI при Мінторзі перевірив запобіжники перед зняттям контролю. Opus 4.8, Sonnet 4.6 та Haiku 4.5 не були зачеплені весь цей час.`,
+      tl7t: `26 червня`,
+      tl8t: `30 червня → 1 липня · вирішено`,
+      tl8e: `<b>Протистояння завершено.</b> Мінторг знімає експортний контроль з <b>обох</b> моделей. <b>Fable 5 відновлено глобально</b> (1 липня — Claude.ai, платформа, Code, Cowork; хмари згодом); Mythos 5 повертається до схвалених організацій США. Рішення: єдиний захисний фільтр, переналаштований під позначену техніку та перевірений CAISI при Мінторзі.`,
+      arcP4: `Потім — відлига. Трамп після зустрічі з Амодеї на G7 заявив, що Anthropic <b>«більше не» загроза національній безпеці</b>. Компанія і влада зійшлися на запобіжниках, перевірці особи та спільних бенчмарках. <b>26 червня</b> стався перший розворот: <b>Mythos 5</b> дозволили повернути приблизно сотні перевірених захисників у США. А <b>30 червня</b> контроль зняли повністю — Мінторг скасував експортний наказ для обох моделей, і <b>Fable 5 почала повертатися глобально 1 липня</b>, завершивши 18-денне протистояння, вирішене єдиним переналаштованим захисним фільтром.`,
+      watchNote: `<b>Спостереження на запит.</b> Фіксується лише за суттєвих змін. <b>Вирішено:</b> США зняли експортний контроль 30 червня; Fable 5 відновлено глобально (1 липня), Mythos 5 — для схвалених організацій США — 18-денне протистояння завершено.`,
+      d0h: `ВИРІШЕНО — США знімають експортний контроль; Fable 5 відновлено глобально`,
+      d0p: `<b>30 червня</b> Міністерство торгівлі зняло експортний контроль з <b>обох</b> моделей — Claude Fable 5 і Mythos 5. Anthropic почала відновлювати доступ <b>1 липня</b>: <b>Fable 5 повертається глобально</b> (Claude.ai, платформа Claude, Claude Code, Cowork; AWS, Google Cloud і Microsoft Foundry згодом), а <b>Mythos 5</b> — до ~100+ схвалених організацій США. 18-денне протистояння вирішив єдиний захисний фільтр, переналаштований під позначену Amazon техніку та перевірений CAISI при Мінторзі. <b>Fable 5 знову доступна.</b>`
+    },
+    it: {
+      restoredBanner: `✓ <b>Accesso ripristinato.</b> Gli USA hanno revocato i controlli sulle esportazioni il 30 giugno; Fable 5 torna in tutto il mondo (1 luglio), Mythos 5 per le organizzazioni statunitensi accreditate — lo stallo di 18 giorni è finito.`,
+      fableState: `Ripristinato`,
+      fableDesc: `Controlli sulle esportazioni revocati il <b>30 giugno</b>. Fable 5 <b>torna in tutto il mondo</b> dal <b>1 luglio</b> — su Claude.ai, la piattaforma Claude, Claude Code e Cowork; AWS, Google Cloud e Microsoft Foundry a seguire.`,
+      fableTag: `Ripristinato a livello globale · rollout in corso`,
+      mythosState: `Ripristinato`,
+      mythosDesc: `Controlli revocati il <b>30 giugno</b>. La variante riservata torna presso <b>~100+ organizzazioni statunitensi accreditate</b> — agenzie, Fortune 500, operatori di infrastrutture critiche — nell'ambito di Project&nbsp;Glasswing, dopo revisione governativa. Non un rilascio pubblico.`,
+      dayCap: `di stallo · risolto il 30 giugno ✓`,
+      unaffected: `Lo stallo di 18 giorni è finito dopo che Anthropic ha ritarato un singolo filtro di sicurezza sulla tecnica segnalata; il CAISI del Commercio ha esaminato le tutele prima della revoca. Opus 4.8, Sonnet 4.6 e Haiku 4.5 non sono mai stati coinvolti.`,
+      tl7t: `26 giu`,
+      tl8t: `30 giu → 1 lug · risolto`,
+      tl8e: `<b>Stallo finito.</b> Il Commercio revoca i controlli sulle esportazioni su <b>entrambi</b> i modelli. <b>Fable 5 ripristinato a livello globale</b> (1 luglio — Claude.ai, piattaforma, Code, Cowork; cloud a seguire); Mythos 5 torna alle organizzazioni statunitensi accreditate. La soluzione: un singolo filtro di sicurezza ritarato sulla tecnica segnalata, esaminato dal CAISI del Commercio.`,
+      arcP4: `Poi il disgelo. Trump, dopo aver incontrato Amodei al G7, dichiarò che Anthropic non era <b>«più» una minaccia per la sicurezza nazionale</b>. Azienda e governo convergerono su guardrail, verifica dell'identità e benchmark condivisi. Il <b>26 giugno</b> arrivò la prima inversione: <b>Mythos 5</b> autorizzato a tornare presso un centinaio di difensori statunitensi accreditati. Poi, il <b>30 giugno</b>, i controlli caddero del tutto — il Commercio revocò l'ordine di esportazione su entrambi i modelli, e <b>Fable 5 iniziò a tornare a livello globale il 1 luglio</b>, ponendo fine a uno stallo di 18 giorni risolto da un singolo filtro di sicurezza ritarato.`,
+      watchNote: `<b>Monitoraggio su richiesta.</b> Registrato solo in caso di cambiamento sostanziale. <b>Risolto:</b> gli USA hanno revocato i controlli sulle esportazioni il 30 giugno; Fable 5 ripristinato a livello globale (1 luglio), Mythos 5 per le organizzazioni statunitensi accreditate — lo stallo di 18 giorni è finito.`,
+      d0h: `RISOLTO — gli USA revocano i controlli sulle esportazioni; Fable 5 ripristinato a livello globale`,
+      d0p: `Il <b>30 giugno</b> il Dipartimento del Commercio ha revocato i controlli sulle esportazioni su <b>entrambi</b> i modelli — Claude Fable 5 e Mythos 5. Anthropic ha iniziato a ripristinare l'accesso il <b>1 luglio</b>: <b>Fable 5 torna a livello globale</b> (Claude.ai, piattaforma Claude, Claude Code, Cowork; AWS, Google Cloud e Microsoft Foundry a seguire), mentre <b>Mythos 5</b> torna presso ~100+ organizzazioni statunitensi accreditate. Lo stallo di 18 giorni è stato risolto da un singolo filtro di sicurezza, ritarato per bloccare l'unica tecnica segnalata da Amazon ed esaminato dal CAISI del Commercio. <b>Fable 5 è tornato.</b>`
+    }
+  };
+  var D = window.FW_I18N || (window.FW_I18N = {});
+  for (var l in U) { D[l] = D[l] || {}; for (var k in U[l]) D[l][k] = U[l][k]; }
+})();
